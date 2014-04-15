@@ -2,7 +2,6 @@ package eu.musesproject.musesawareapp.ui;
 
 import java.util.HashMap;
 import java.util.Map;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ActivityManager;
@@ -19,7 +18,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 import eu.musesproject.client.contextmonitoring.service.aidl.Action;
-import eu.musesproject.client.contextmonitoring.service.aidl.ActionType;
 import eu.musesproject.musesawareapp.R;
 import eu.musesproject.musesawareapp.sensorserviceconsumer.MusesServiceConsumer;
 import eu.musesproject.musesawareapp.sensorserviceconsumer.ServiceModel;
@@ -63,12 +61,12 @@ public class MainActivity extends Activity implements View.OnClickListener{
 		switch (v.getId()) {
 		case R.id.asset1 :
 			if (isServiceRunning()) {
-				sendUserActionsToRemoteMusesService(new Action(ActionType.ACTION_REMOTE_FILE_ACCESS, System.currentTimeMillis()));
+				sendUserActionsToRemoteMusesService(new Action("access", System.currentTimeMillis()));
 				resultView.setText("Allowed");
 			}
 			break;
 		case R.id.asset2 :
-			sendUserActionsToRemoteMusesService(new Action(ActionType.ACTION_REMOTE_FILE_ACCESS, System.currentTimeMillis()));
+			sendUserActionsToRemoteMusesService(new Action("access", System.currentTimeMillis()));
 			resultView.setText("Not Allowed");
 			break;
 		
