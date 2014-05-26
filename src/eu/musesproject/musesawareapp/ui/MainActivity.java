@@ -25,7 +25,7 @@ import eu.musesproject.musesawareapp.sensorserviceconsumer.ServiceModel;
 public class MainActivity extends Activity implements View.OnClickListener{
 
 	private static String TAG = MainActivity.class.getSimpleName();
-	private Button asset1, asset2; 
+	private Button open, run,install,access; 
 	private TextView resultView;
 	// Muses Service
 	private ServiceModel serviceModel;
@@ -39,11 +39,16 @@ public class MainActivity extends Activity implements View.OnClickListener{
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		asset1 = (Button) findViewById(R.id.asset1);
-		asset2 = (Button) findViewById(R.id.asset2);
+		open = (Button) findViewById(R.id.open_btn);
+		run = (Button) findViewById(R.id.run_btn);
+		install = (Button) findViewById(R.id.install_btn);
+		access = (Button) findViewById(R.id.access_btn);
+
 		resultView = (TextView) findViewById(R.id.result_text_view);
-		asset1.setOnClickListener(this);
-		asset2.setOnClickListener(this);
+		open.setOnClickListener(this);
+		run.setOnClickListener(this);
+		install.setOnClickListener(this);
+		access.setOnClickListener(this);
 		context = getApplicationContext();
 		regiterForMusesService();
 		
@@ -59,17 +64,20 @@ public class MainActivity extends Activity implements View.OnClickListener{
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
-		case R.id.asset1 :
+		case R.id.open_btn :
 			if (isServiceRunning()) {
-				sendUserActionsToRemoteMusesService(new Action("access", System.currentTimeMillis()));
-				resultView.setText("Allowed");
+				sendUserActionsToRemoteMusesService(new Action("open", System.currentTimeMillis()));
 			}
 			break;
-		case R.id.asset2 :
-			sendUserActionsToRemoteMusesService(new Action("access", System.currentTimeMillis()));
-			resultView.setText("Not Allowed");
+		case R.id.run_btn :
+			sendUserActionsToRemoteMusesService(new Action("run", System.currentTimeMillis()));
 			break;
-		
+		case R.id.install_btn :
+			sendUserActionsToRemoteMusesService(new Action("install", System.currentTimeMillis()));
+			break;
+		case R.id.access_btn :
+			sendUserActionsToRemoteMusesService(new Action("access", System.currentTimeMillis()));
+			break;
 		}
 	}
 	
@@ -124,11 +132,13 @@ public class MainActivity extends Activity implements View.OnClickListener{
 			case ACTION_ACCEPTED:
 				Log.d(TAG, "ACTION_ACCEPTED from Muses");
 				Toast.makeText(context, "Action .. accepted", Toast.LENGTH_SHORT).show();
+				resultView.setText("Allowed");
 				//((MainActivity)activity).showResultDialog(msg.getData().getString("message"));
 				break;
 			case ACTION_DENIED:
 				Log.d(TAG, "ACTION_DENIED from Muses");
 				Toast.makeText(context, "Action .. denied", Toast.LENGTH_SHORT).show();
+				resultView.setText("Not Allowed");
 				//((MainActivity)activity).showResultDialog(msg.getData().getString("message"));
 				break;
 			}

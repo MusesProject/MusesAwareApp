@@ -10,21 +10,29 @@
         android:orientation="vertical" >
 
         <Button
-            android:id="@+id/asset1"
+            android:id="@+id/open_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/button_selector"
-            android:text="@string/asset_a"
-            android:textSize="60sp" />
+            android:text="@string/open" />
 
         <Button
-            android:id="@+id/asset2"
+            android:id="@+id/install_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/button_selector"
-            android:textSize="60sp"
-            android:text="@string/asset_b" />
+            android:text="@string/install" />
+
+        <Button
+            android:id="@+id/run_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/run" />
+
+        <Button
+            android:id="@+id/access_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/access" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -46,7 +54,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:textSize="35dp" />
-
     </LinearLayout>
 
 </LinearLayout>
