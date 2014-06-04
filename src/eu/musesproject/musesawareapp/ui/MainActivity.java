@@ -131,15 +131,11 @@ public class MainActivity extends Activity implements View.OnClickListener{
 			switch(msg.what){
 			case ACTION_ACCEPTED:
 				Log.d(TAG, "ACTION_ACCEPTED from Muses");
-				Toast.makeText(context, "Action .. accepted", Toast.LENGTH_SHORT).show();
-				resultView.setText("Allowed");
-				//((MainActivity)activity).showResultDialog(msg.getData().getString("message"));
+				resultView.setText("Action allowed");
 				break;
 			case ACTION_DENIED:
 				Log.d(TAG, "ACTION_DENIED from Muses");
-				Toast.makeText(context, "Action .. denied", Toast.LENGTH_SHORT).show();
-				resultView.setText("Not Allowed");
-				//((MainActivity)activity).showResultDialog(msg.getData().getString("message"));
+				resultView.setText("Action not allowed");
 				break;
 			}
 		}
