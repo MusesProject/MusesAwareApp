@@ -16,6 +16,12 @@
             android:text="@string/open" />
 
         <Button
+            android:id="@+id/open_conf_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/open_confidential" />
+
+        <Button
             android:id="@+id/install_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -32,7 +38,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/access" />
-
     </LinearLayout>
 
     <LinearLayout
