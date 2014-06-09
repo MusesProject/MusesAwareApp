@@ -75,7 +75,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
 		case R.id.open_conf_btn :
 			Map<String, String> openConfAssetProperties = new HashMap<String, String>();
 			openConfAssetProperties.put("resourceName","statistics");
-			openConfAssetProperties.put("resourceType","insensitive");
+			openConfAssetProperties.put("resourceType","sensitive");
 			openConfAssetProperties.put("resourcePath","/sdcard/Swe/MUSES_partner_grades.txt");
 			Action openConfAssetAction = new Action("open_asset", System.currentTimeMillis());
 			sendUserActionsToRemoteMusesService(openConfAssetAction, openConfAssetProperties);
