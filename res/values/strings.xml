@@ -2,15 +2,15 @@
 <resources>
     <string name="app_name">Sweden Connectivity</string>
     <string name="action_settings">Settings</string>
-	<string name="open">public asset</string>
-	<string name="open_confidential">confidential asset</string>
-	<string name="open_asset_with_sensitivity">Open asset with Sensitivity level</string>
-	<string name="send_virus_event">Virus Found</string>
-	<string name="send_email_event">Send Email</string>
-	<string name="send_email_with_attachment">Send Email with Attachment</string>
-	<string name="install">install</string>
-	<string name="run">run</string>
-	<string name="access">access</string>
+	<string name="open">open public asset</string>
+	<string name="open_internal">open internal asset</string>
+	<string name="open_confidential">open confidential asset</string>
+	<string name="open_strictly_confidential">open strictly confidential asset</string>
+	<string name="open_asset_with_sensitivity">open asset with sensitivity level</string>
+	<string name="send_virus_event">virus found</string>
+	<string name="send_email_event">send email</string>
+	<string name="send_email_with_attachment">send email with attachment</string>
+	<string name="install">install application</string>
 	
 	
 	<!-- Feedback dialog strings -->

@@ -17,11 +17,25 @@
             android:text="@string/open" />
 
         <Button
+            android:id="@+id/open_internal_asset_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:contentDescription="internal asset"
+            android:text="@string/open_internal" />
+
+        <Button
             android:id="@+id/open_conf_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:contentDescription="confidential asset"
             android:text="@string/open_confidential" />
+
+        <Button
+            android:id="@+id/open_strictly_conf_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:contentDescription="strictly confidential asset"
+            android:text="@string/open_strictly_confidential" />
 
         <Button
             android:id="@+id/open_asset_with_sensitivity_btn"
@@ -50,7 +64,7 @@
             android:layout_height="wrap_content"
             android:contentDescription="email attachment event"
             android:text="@string/send_email_with_attachment" />
-        
+
         <Button
             android:id="@+id/install_btn"
             android:layout_width="match_parent"

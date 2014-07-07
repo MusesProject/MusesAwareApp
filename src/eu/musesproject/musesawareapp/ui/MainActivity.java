@@ -47,7 +47,7 @@ import eu.musesproject.musesawareapp.sensorserviceconsumer.ServiceModel;
 public class MainActivity extends Activity implements View.OnClickListener{
 
 	private static String TAG = MainActivity.class.getSimpleName();
-	private Button open,openConfAssetButton, openAssetWithSensitivity, sendVirus,sendEmail, sendEmailWithAttachment, install; 
+	private Button openPublicAsset,openInternalAsset,openConfAsset,openStrictlyConfAsset,openAssetWithSensitivity,sendVirus,sendEmail,sendEmailWithAttachment,install; 
 	private TextView resultView;
 	// Muses Service
 	private ServiceModel serviceModel;
@@ -62,21 +62,28 @@ public class MainActivity extends Activity implements View.OnClickListener{
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		open = (Button) findViewById(R.id.open_btn);
-		openConfAssetButton = (Button) findViewById(R.id.open_conf_btn);
+		
+		openPublicAsset = (Button) findViewById(R.id.open_btn);
+		openInternalAsset = (Button) findViewById(R.id.open_internal_asset_btn);
+		openConfAsset = (Button) findViewById(R.id.open_conf_btn);
+		openStrictlyConfAsset = (Button) findViewById(R.id.open_strictly_conf_btn);
 		openAssetWithSensitivity = (Button) findViewById(R.id.open_asset_with_sensitivity_btn);
 		sendVirus = (Button) findViewById(R.id.send_virus_event_btn);
 		sendEmail = (Button) findViewById(R.id.send_email_event_btn);
 		sendEmailWithAttachment = (Button) findViewById(R.id.send_email_with_attachment_event_btn);
 		install = (Button) findViewById(R.id.install_btn);
 		resultView = (TextView) findViewById(R.id.result_text_view);
-		open.setOnClickListener(this);
-		openConfAssetButton.setOnClickListener(this);
+		
+		openPublicAsset.setOnClickListener(this);
+		openInternalAsset.setOnClickListener(this);
+		openConfAsset.setOnClickListener(this);
+		openStrictlyConfAsset.setOnClickListener(this);
 		openAssetWithSensitivity.setOnClickListener(this);
 		sendVirus.setOnClickListener(this);
 		sendEmail.setOnClickListener(this);
 		sendEmailWithAttachment.setOnClickListener(this);
 		install.setOnClickListener(this);
+		
 		regiterForMusesService();
 
 	}
@@ -92,27 +99,39 @@ public class MainActivity extends Activity implements View.OnClickListener{
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.open_btn :
-			currentSelectedFile ="/sdcard/Swe/MUSES_beer_competition.txt";
 			Map<String, String> openAssetProperties = new HashMap<String, String>();
 			openAssetProperties.put("resourceName","statistics");
 			openAssetProperties.put("resourceType","insensitive");
 			openAssetProperties.put("resourcePath","/sdcard/Swe/MUSES_beer_competition.txt");
 			Action openAssetAction = new Action("open_asset", System.currentTimeMillis());
 			sendUserActionsToRemoteMusesService(openAssetAction, openAssetProperties);
-			//showDialog("loading ...");
+			break;
+		case R.id.open_internal_asset_btn :
+			Map<String, String> openInternalAssetProperties = new HashMap<String, String>();
+			openInternalAssetProperties.put("resourceName","statistics");
+			openInternalAssetProperties.put("resourceType","insensitive");
+			openInternalAssetProperties.put("resourcePath","/sdcard/Swe/MUSES_beer_competition.txt");
+			Action openInternalAssetAction = new Action("open_asset", System.currentTimeMillis());
+			sendUserActionsToRemoteMusesService(openInternalAssetAction, openInternalAssetProperties);
 			break;
 		case R.id.open_conf_btn :
-			currentSelectedFile = "/sdcard/Swe/MUSES_partner_grades.txt";
 			Map<String, String> openConfAssetProperties = new HashMap<String, String>();
 			openConfAssetProperties.put("resourceName","statistics");
 			openConfAssetProperties.put("resourceType","sensitive");
 			openConfAssetProperties.put("resourcePath","/sdcard/Swe/MUSES_partner_grades.txt");
 			Action openConfAssetAction = new Action("open_asset", System.currentTimeMillis());
 			sendUserActionsToRemoteMusesService(openConfAssetAction, openConfAssetProperties);
-			//showDialog("loading ...");
+			break;
+		case R.id.open_strictly_conf_btn :
+			Map<String, String> openStrictlyConfAssetProperties = new HashMap<String, String>();
+			openStrictlyConfAssetProperties.put("resourceName","statistics");
+			openStrictlyConfAssetProperties.put("resourceType","sensitive");
+			openStrictlyConfAssetProperties.put("resourcePath","/sdcard/Swe/MUSES_partner_grades.txt");
+			Action openStrictlyConfAssetAction = new Action("open_asset", System.currentTimeMillis());
+			sendUserActionsToRemoteMusesService(openStrictlyConfAssetAction, openStrictlyConfAssetProperties);
+			showResultDialog("You are not allowed to open this asset", FeedbackActivity.ACTION_RESPONSE_DENIED);
 			break;
 		case R.id.open_asset_with_sensitivity_btn :
-			currentSelectedFile = "/sdcard/Swe/MUSES_partner_grades.txt";
 			Map<String, String> openAssetWithSensitivityProperties = new HashMap<String, String>();
 			openAssetWithSensitivityProperties.put("resourceName","statistics");
 			openAssetWithSensitivityProperties.put("resourceType","sensitive");
@@ -120,20 +139,16 @@ public class MainActivity extends Activity implements View.OnClickListener{
 			openAssetWithSensitivityProperties.put("sensitivity_level", "internal");	
 			Action openAssetWithSensitivityAction = new Action("open_asset", System.currentTimeMillis());
 			sendUserActionsToRemoteMusesService(openAssetWithSensitivityAction, openAssetWithSensitivityProperties);
-			//showDialog("loading ...");
 			break;
 		case R.id.send_virus_event_btn :
-			currentSelectedFile = "/sdcard/Swe/MUSES_partner_grades.txt";
 			Map<String, String> sendVirusProperties = new HashMap<String, String>();
 			sendVirusProperties.put("path","/sdcard/...");
 			sendVirusProperties.put("name","blabla");
 			sendVirusProperties.put("severity","high");
 			Action sendVirusAction = new Action("virus_found", System.currentTimeMillis());
 			sendUserActionsToRemoteMusesService(sendVirusAction, sendVirusProperties);
-			//showDialog("loading ...");
 			break;
 		case R.id.send_email_event_btn :
-			currentSelectedFile = "/sdcard/Swe/MUSES_partner_grades.txt";
 			Map<String, String> sendEmailProperties = new HashMap<String, String>();
 			sendEmailProperties.put("resourceName","statistics");
 			sendEmailProperties.put("resourceType","sensitive");
@@ -141,10 +156,8 @@ public class MainActivity extends Activity implements View.OnClickListener{
 			Action sendEmailAction = new Action("send_mail", System.currentTimeMillis());
 			sendUserActionsToRemoteMusesService(sendEmailAction, sendEmailProperties);
 			showResultDialog("You are not allowed to send email with this email client", FeedbackActivity.ACTION_RESPONSE_DENIED);
-			//showDialog("loading ...");
 			break;
 		case R.id.send_email_with_attachment_event_btn :
-			currentSelectedFile = "/sdcard/Swe/MUSES_partner_grades.txt";
 			Map<String, String> sendEmailAttachmentProperties = new HashMap<String, String>();
 			sendEmailAttachmentProperties.put("resourceName","statistics");
 			sendEmailAttachmentProperties.put("resourceType","sensitive");
@@ -152,7 +165,6 @@ public class MainActivity extends Activity implements View.OnClickListener{
 			Action sendEmailAttachmentAction = new Action("file_attached", System.currentTimeMillis());
 			sendUserActionsToRemoteMusesService(sendEmailAttachmentAction, sendEmailAttachmentProperties);
 			showResultDialog("You are not allowed to attach this file", FeedbackActivity.ACTION_RESPONSE_DENIED);
-			//showDialog("loading ...");
 			break;
 		case R.id.install_btn :
 			Map<String, String> installProperties = new HashMap<String, String>();
@@ -165,25 +177,6 @@ public class MainActivity extends Activity implements View.OnClickListener{
 			//sendUserActionsToRemoteMusesService(installAction,installProperties);
 			break;
 		}
-	}
-	
-	private void openFileInView(String path){
-		File file = new File(path);
-		Intent intent = new Intent(Intent.ACTION_VIEW);
-		intent.setDataAndType(Uri.fromFile(file), "application/pdf");
-		intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-		startActivity(intent);
-		
-	}
-	
-	private void showDialog(String message) {
-		pDialog = new ProgressDialog(MainActivity.this, AlertDialog.THEME_TRADITIONAL);
-		pDialog.setTitle("Please wait...");
-		pDialog.setMessage(message);
-		pDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-		pDialog.setIndeterminate(false);
-		pDialog.setCancelable(false);
-		pDialog.show();
 	}
 	
 	// FIXME this method does not work properly 
@@ -233,7 +226,6 @@ public class MainActivity extends Activity implements View.OnClickListener{
 				Log.d(TAG, "ACTION_ACCEPTED from Muses");
 				resultView.setText("Action allowed");	
 				//pDialog.dismiss();
-				openFileInView(currentSelectedFile);  // temp FIXME We should find a better way to find which file was selected 
 				break;
 			case ACTION_DENIED:
 				Log.d(TAG, "ACTION_DENIED from Muses");
