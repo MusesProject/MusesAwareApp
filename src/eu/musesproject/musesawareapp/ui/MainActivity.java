@@ -99,6 +99,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.open_btn :
+			currentSelectedFile = "/sdcard/Swe/MUSES_beer_competition.txt";
 			Map<String, String> openAssetProperties = new HashMap<String, String>();
 			openAssetProperties.put("resourceName","statistics");
 			openAssetProperties.put("resourceType","insensitive");
@@ -107,14 +108,17 @@ public class MainActivity extends Activity implements View.OnClickListener{
 			sendUserActionsToRemoteMusesService(openAssetAction, openAssetProperties);
 			break;
 		case R.id.open_internal_asset_btn :
+			currentSelectedFile = "/sdcard/Swe/MUSES_internal_asset.txt";
 			Map<String, String> openInternalAssetProperties = new HashMap<String, String>();
 			openInternalAssetProperties.put("resourceName","statistics");
 			openInternalAssetProperties.put("resourceType","insensitive");
-			openInternalAssetProperties.put("resourcePath","/sdcard/Swe/MUSES_beer_competition.txt");
+			openInternalAssetProperties.put("resourcePath","/sdcard/Swe/MUSES_internal_asset.txt");
 			Action openInternalAssetAction = new Action("open_asset", System.currentTimeMillis());
 			sendUserActionsToRemoteMusesService(openInternalAssetAction, openInternalAssetProperties);
+			openFileInView(currentSelectedFile);
 			break;
 		case R.id.open_conf_btn :
+			currentSelectedFile = "/sdcard/Swe/MUSES_partner_grades.txt";
 			Map<String, String> openConfAssetProperties = new HashMap<String, String>();
 			openConfAssetProperties.put("resourceName","statistics");
 			openConfAssetProperties.put("resourceType","sensitive");
@@ -123,10 +127,11 @@ public class MainActivity extends Activity implements View.OnClickListener{
 			sendUserActionsToRemoteMusesService(openConfAssetAction, openConfAssetProperties);
 			break;
 		case R.id.open_strictly_conf_btn :
+			currentSelectedFile = "/sdcard/Swe/MUSES_strictly_confidential.txt";
 			Map<String, String> openStrictlyConfAssetProperties = new HashMap<String, String>();
 			openStrictlyConfAssetProperties.put("resourceName","statistics");
 			openStrictlyConfAssetProperties.put("resourceType","sensitive");
-			openStrictlyConfAssetProperties.put("resourcePath","/sdcard/Swe/MUSES_partner_grades.txt");
+			openStrictlyConfAssetProperties.put("resourcePath","/sdcard/Swe/MUSES_strictly_confidential.txt");
 			Action openStrictlyConfAssetAction = new Action("open_asset", System.currentTimeMillis());
 			sendUserActionsToRemoteMusesService(openStrictlyConfAssetAction, openStrictlyConfAssetProperties);
 			showResultDialog("You are not allowed to open this asset", FeedbackActivity.ACTION_RESPONSE_DENIED);
@@ -139,6 +144,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
 			openAssetWithSensitivityProperties.put("sensitivity_level", "internal");	
 			Action openAssetWithSensitivityAction = new Action("open_asset", System.currentTimeMillis());
 			sendUserActionsToRemoteMusesService(openAssetWithSensitivityAction, openAssetWithSensitivityProperties);
+			showResultDialog("Not allowed", FeedbackActivity.ACTION_RESPONSE_DENIED);
 			break;
 		case R.id.send_virus_event_btn :
 			Map<String, String> sendVirusProperties = new HashMap<String, String>();
@@ -147,6 +153,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
 			sendVirusProperties.put("severity","high");
 			Action sendVirusAction = new Action("virus_found", System.currentTimeMillis());
 			sendUserActionsToRemoteMusesService(sendVirusAction, sendVirusProperties);
+			showResultDialog("Your device is infected .. please contact admin..", FeedbackActivity.ACTION_RESPONSE_DENIED);
 			break;
 		case R.id.send_email_event_btn :
 			Map<String, String> sendEmailProperties = new HashMap<String, String>();
@@ -225,6 +232,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
 			case ACTION_ACCEPTED:
 				Log.d(TAG, "ACTION_ACCEPTED from Muses");
 				resultView.setText("Action allowed");	
+				openFileInView(currentSelectedFile);
 				//pDialog.dismiss();
 				break;
 			case ACTION_DENIED:
@@ -237,7 +245,14 @@ public class MainActivity extends Activity implements View.OnClickListener{
 
 	};
 	
-	
+	private void openFileInView(String path){
+		File file = new File(path);
+		Intent intent = new Intent(Intent.ACTION_VIEW);
+		intent.setDataAndType(Uri.fromFile(file), "application/pdf");
+		intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+		startActivity(intent);
+		
+	}
 	
 	// For testing delete later FIXME
 	/**
