@@ -13,49 +13,31 @@
             android:id="@+id/open_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:contentDescription="public asset"
             android:text="@string/open" />
 
         <Button
             android:id="@+id/open_conf_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:contentDescription="confidential asset"
             android:text="@string/open_confidential" />
 
-        <Button
-            android:id="@+id/open_asset_with_sensitivity_btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:contentDescription="asset with sensitivity"
-            android:text="@string/open_asset_with_sensitivity" />
-
-        <Button
-            android:id="@+id/send_virus_event_btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:contentDescription="virus event"
-            android:text="@string/send_virus_event" />
-
-        <Button
-            android:id="@+id/send_email_event_btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:contentDescription="email event"
-            android:text="@string/send_email_event" />
-
-        <Button
-            android:id="@+id/send_email_with_attachment_event_btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:contentDescription="email attachment event"
-            android:text="@string/send_email_with_attachment" />
-        
         <Button
             android:id="@+id/install_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/install" />
+
+        <Button
+            android:id="@+id/run_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/run" />
+
+        <Button
+            android:id="@+id/access_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/access" />
     </LinearLayout>
 
     <LinearLayout
