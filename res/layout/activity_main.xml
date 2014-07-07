@@ -69,6 +69,7 @@
             android:id="@+id/install_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:contentDescription="install"
             android:text="@string/install" />
     </LinearLayout>
 

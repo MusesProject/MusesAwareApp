@@ -248,7 +248,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
 	private void openFileInView(String path){
 		File file = new File(path);
 		Intent intent = new Intent(Intent.ACTION_VIEW);
-		intent.setDataAndType(Uri.fromFile(file), "application/pdf");
+		intent.setDataAndType(Uri.fromFile(file), "text/plain");
 		intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
 		startActivity(intent);
 		
