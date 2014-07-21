@@ -157,18 +157,26 @@ public class MainActivity extends Activity implements View.OnClickListener{
 			break;
 		case R.id.send_email_event_btn :
 			Map<String, String> sendEmailProperties = new HashMap<String, String>();
-			sendEmailProperties.put("resourceName","statistics");
-			sendEmailProperties.put("resourceType","sensitive");
-			sendEmailProperties.put("resourcePath","/sdcard/Swe/MUSES_partner_grades.txt");
+			sendEmailProperties.put("from", "test@muses.com");
+			sendEmailProperties.put("to", "test@muses.com");
+			sendEmailProperties.put("cc", "test@muses.com");
+			sendEmailProperties.put("bcc", "test@muses.com");
+			sendEmailProperties.put("subject", "test email sensor");
 			Action sendEmailAction = new Action("send_mail", System.currentTimeMillis());
 			sendUserActionsToRemoteMusesService(sendEmailAction, sendEmailProperties);
 			showResultDialog("You are not allowed to send email with this email client", FeedbackActivity.ACTION_RESPONSE_DENIED);
 			break;
 		case R.id.send_email_with_attachment_event_btn :
 			Map<String, String> sendEmailAttachmentProperties = new HashMap<String, String>();
-			sendEmailAttachmentProperties.put("resourceName","statistics");
-			sendEmailAttachmentProperties.put("resourceType","sensitive");
-			sendEmailAttachmentProperties.put("resourcePath","/sdcard/Swe/MUSES_partner_grades.txt");
+			sendEmailAttachmentProperties.put("from", "test@muses.com");
+			sendEmailAttachmentProperties.put("to", "test@muses.com");
+			sendEmailAttachmentProperties.put("cc", "test@muses.com");
+			sendEmailAttachmentProperties.put("bcc", "test@muses.com");
+			sendEmailAttachmentProperties.put("subject", "test email sensor");
+			sendEmailAttachmentProperties.put("number_of_attachments", "1");
+			sendEmailAttachmentProperties.put("attachment_type", "pdf");
+			sendEmailAttachmentProperties.put("attachment_name", "test_confidential.pdf");
+			sendEmailAttachmentProperties.put("attachment_size", "25KB");
 			Action sendEmailAttachmentAction = new Action("file_attached", System.currentTimeMillis());
 			sendUserActionsToRemoteMusesService(sendEmailAttachmentAction, sendEmailAttachmentProperties);
 			showResultDialog("You are not allowed to attach this file", FeedbackActivity.ACTION_RESPONSE_DENIED);
