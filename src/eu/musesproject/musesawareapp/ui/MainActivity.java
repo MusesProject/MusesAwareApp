@@ -148,8 +148,8 @@ public class MainActivity extends Activity implements View.OnClickListener{
 			break;
 		case R.id.send_virus_event_btn :
 			Map<String, String> sendVirusProperties = new HashMap<String, String>();
-			sendVirusProperties.put("path","/sdcard/...");
-			sendVirusProperties.put("name","blabla");
+			sendVirusProperties.put("path","/sdcard/Swe/virus.txt");
+			sendVirusProperties.put("name","serious_virus");
 			sendVirusProperties.put("severity","high");
 			Action sendVirusAction = new Action("virus_found", System.currentTimeMillis());
 			sendUserActionsToRemoteMusesService(sendVirusAction, sendVirusProperties);
