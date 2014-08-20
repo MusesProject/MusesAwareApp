@@ -132,7 +132,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
 			openStrictlyConfAssetProperties.put("resourceType","sensitive");
 			openStrictlyConfAssetProperties.put("resourcePath","/sdcard/Swe/MUSES_strictly_confidential.txt");
 			Action openStrictlyConfAssetAction = new Action("open_asset", System.currentTimeMillis());
-			sendUserActionsToRemoteMusesService(openStrictlyConfAssetAction, openStrictlyConfAssetProperties);
+//			sendUserActionsToRemoteMusesService(openStrictlyConfAssetAction, openStrictlyConfAssetProperties);
 			showResultDialog("You are not allowed to open this asset", FeedbackActivity.ACTION_RESPONSE_DENIED);
 			break;
 		case R.id.open_asset_with_sensitivity_btn :
@@ -142,7 +142,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
 			openAssetWithSensitivityProperties.put("resourcePath","/sdcard/Swe/MUSES_partner_grades.txt");
 			openAssetWithSensitivityProperties.put("sensitivity_level", "internal");	
 			Action openAssetWithSensitivityAction = new Action("open_asset", System.currentTimeMillis());
-			sendUserActionsToRemoteMusesService(openAssetWithSensitivityAction, openAssetWithSensitivityProperties);
+//			sendUserActionsToRemoteMusesService(openAssetWithSensitivityAction, openAssetWithSensitivityProperties);
 			showResultDialog("Not allowed", FeedbackActivity.ACTION_RESPONSE_DENIED);
 			break;
 		case R.id.send_virus_event_btn :
@@ -152,7 +152,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
 			sendVirusProperties.put("severity","high");
 			Action sendVirusAction = new Action("virus_found", System.currentTimeMillis());
 			sendUserActionsToRemoteMusesService(sendVirusAction, sendVirusProperties);
-			showResultDialog("Your device is infected .. please contact admin..", FeedbackActivity.ACTION_RESPONSE_DENIED);
+//			showResultDialog("Your device is infected .. please contact admin..", FeedbackActivity.ACTION_RESPONSE_DENIED);
 			break;
 		case R.id.send_email_event_btn :
 			Map<String, String> sendEmailProperties = new HashMap<String, String>();
@@ -165,7 +165,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
 			sendEmailProperties.put("attachmentInfo", "");
 			Action sendEmailAction = new Action("ACTION_SEND_MAIL", System.currentTimeMillis());
 			sendUserActionsToRemoteMusesService(sendEmailAction, sendEmailProperties);
-			showResultDialog("You are not allowed to send email with this email client", FeedbackActivity.ACTION_RESPONSE_DENIED);
+//			showResultDialog("You are not allowed to send email with this email client", FeedbackActivity.ACTION_RESPONSE_DENIED);
 			break;
 		case R.id.send_email_with_attachment_event_btn :
 			Map<String, String> sendEmailAttachmentProperties = new HashMap<String, String>();
@@ -178,7 +178,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
 			sendEmailAttachmentProperties.put("attachmentInfo", "pdf");
 			Action sendEmailAttachmentAction = new Action("ACTION_SEND_MAIL", System.currentTimeMillis());
 			sendUserActionsToRemoteMusesService(sendEmailAttachmentAction, sendEmailAttachmentProperties);
-			showResultDialog("You are not allowed to attach this file", FeedbackActivity.ACTION_RESPONSE_DENIED);
+//			showResultDialog("You are not allowed to attach this file", FeedbackActivity.ACTION_RESPONSE_DENIED);
 			break;
 		case R.id.install_btn :
 			Map<String, String> installProperties = new HashMap<String, String>();
