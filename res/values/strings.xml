@@ -11,6 +11,9 @@
 	<string name="send_email_event">send email</string>
 	<string name="send_email_with_attachment">send email with attachment</string>
 	<string name="install">install application</string>
+	<string name="create_asset">create asset</string>
+	<string name="copy_asset">copy asset</string>
+	<string name="send_asset">send asset</string>
 	
 	
 	<!-- Feedback dialog strings -->

@@ -4,94 +4,122 @@
     android:layout_height="fill_parent"
     android:orientation="vertical" >
 
-    <LinearLayout
+    <ScrollView
+        android:id="@+id/login_scrollView"
         android:layout_width="match_parent"
-        android:layout_height="442dp"
-        android:orientation="vertical" >
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp" >
 
-        <Button
-            android:id="@+id/open_btn"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:contentDescription="public asset"
-            android:text="@string/open" />
+            android:orientation="vertical" >
 
-        <Button
-            android:id="@+id/open_internal_asset_btn"
+            <Button
+                android:id="@+id/open_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="public asset"
+                android:text="@string/open" />
+
+            <Button
+                android:id="@+id/open_internal_asset_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="internal asset"
+                android:text="@string/open_internal" />
+
+            <Button
+                android:id="@+id/open_conf_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="confidential asset"
+                android:text="@string/open_confidential" />
+
+            <Button
+                android:id="@+id/open_strictly_conf_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="strictly confidential asset"
+                android:text="@string/open_strictly_confidential" />
+
+            <Button
+                android:id="@+id/open_asset_with_sensitivity_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="asset with sensitivity"
+                android:text="@string/open_asset_with_sensitivity" />
+
+            <Button
+                android:id="@+id/send_virus_event_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="virus event"
+                android:text="@string/send_virus_event" />
+
+            <Button
+                android:id="@+id/send_email_event_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="email event"
+                android:text="@string/send_email_event" />
+
+            <Button
+                android:id="@+id/send_email_with_attachment_event_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="email attachment event"
+                android:text="@string/send_email_with_attachment" />
+
+            <Button
+                android:id="@+id/install_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="install"
+                android:text="@string/install" />
+
+            <Button
+                android:id="@+id/create_asset_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="create asset"
+                android:text="@string/create_asset" />
+
+            <Button
+                android:id="@+id/copy_asset_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="copy asset"
+                android:text="@string/copy_asset" />
+
+            <Button
+                android:id="@+id/send_asset_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="send asset"
+                android:text="@string/send_asset" />
+        </LinearLayout>
+    </ScrollView>
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:contentDescription="internal asset"
-            android:text="@string/open_internal" />
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
 
-        <Button
-            android:id="@+id/open_conf_btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:contentDescription="confidential asset"
-            android:text="@string/open_confidential" />
+            <TextView
+                android:id="@+id/result_label_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Result"
+                android:textColor="#663399"
+                android:textSize="60dp" />
 
-        <Button
-            android:id="@+id/open_strictly_conf_btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:contentDescription="strictly confidential asset"
-            android:text="@string/open_strictly_confidential" />
-
-        <Button
-            android:id="@+id/open_asset_with_sensitivity_btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:contentDescription="asset with sensitivity"
-            android:text="@string/open_asset_with_sensitivity" />
-
-        <Button
-            android:id="@+id/send_virus_event_btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:contentDescription="virus event"
-            android:text="@string/send_virus_event" />
-
-        <Button
-            android:id="@+id/send_email_event_btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:contentDescription="email event"
-            android:text="@string/send_email_event" />
-
-        <Button
-            android:id="@+id/send_email_with_attachment_event_btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:contentDescription="email attachment event"
-            android:text="@string/send_email_with_attachment" />
-
-        <Button
-            android:id="@+id/install_btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:contentDescription="install"
-            android:text="@string/install" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical" >
-
-        <TextView
-            android:id="@+id/result_label_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Result"
-            android:textColor="#663399"
-            android:textSize="60dp" />
-
-        <TextView
-            android:id="@+id/result_text_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:textSize="35dp" />
-    </LinearLayout>
+            <TextView
+                android:id="@+id/result_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:textSize="35dp" />
+        </LinearLayout>
 
 </LinearLayout>
