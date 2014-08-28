@@ -62,7 +62,11 @@ public class MusesServiceConsumer {
 	
 	public void startService() {
 		Log.v(TAG, "Binding Service");
-		context.bindService(new Intent(IMusesService.class.getName()), 
+		Intent connectToMusesServiceIntent = new Intent(IMusesService.class.getName());
+		Bundle credentialsExtras = new Bundle();
+		credentialsExtras.putString("package", "eu.musesproject.musesawareapp");
+		connectToMusesServiceIntent.putExtras(credentialsExtras);
+		context.bindService(connectToMusesServiceIntent, 
 				mServiceConn, 
 				Context.BIND_AUTO_CREATE);
 		
