@@ -100,6 +100,8 @@ public class FeedbackActivity extends Activity implements View.OnClickListener {
 		feedBackDialog = new Dialog(this);
 		feedBackDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		feedBackDialog.setContentView(R.layout.feedback_dialog);
+		feedBackDialog.setCanceledOnTouchOutside(false);
+		feedBackDialog.setCancelable(false);
 		mainLayout = (RelativeLayout) feedBackDialog.findViewById(R.id.relative_layout_main);
 		// Views	
 		feedbackView = (TextView)feedBackDialog.findViewById(R.id.feedback_txt);
