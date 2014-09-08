@@ -47,7 +47,8 @@ public class MainActivity extends Activity implements View.OnClickListener{
 
 	private static String TAG = MainActivity.class.getSimpleName();
 	private Button openPublicAsset,openInternalAsset,openConfAsset,openStrictlyConfAsset,openAssetWithSensitivity,
-				   sendVirus,sendEmail,sendEmailWithAttachment,install,createAsset,copyAsset,sendAsset; 
+				   sendVirus,sendEmail,
+				   createAsset,copyAsset,sendAsset; 
 	private TextView resultView;
 	// Muses Service
 	private ServiceModel serviceModel;
@@ -70,8 +71,6 @@ public class MainActivity extends Activity implements View.OnClickListener{
 		openAssetWithSensitivity = (Button) findViewById(R.id.open_asset_with_sensitivity_btn);
 		sendVirus = (Button) findViewById(R.id.send_virus_event_btn);
 		sendEmail = (Button) findViewById(R.id.send_email_event_btn);
-		sendEmailWithAttachment = (Button) findViewById(R.id.send_email_with_attachment_event_btn);
-		install = (Button) findViewById(R.id.install_btn);
 		createAsset = (Button) findViewById(R.id.create_asset_btn);
 		copyAsset = (Button) findViewById(R.id.copy_asset_btn);
 		sendAsset = (Button) findViewById(R.id.send_asset_btn);
@@ -84,8 +83,6 @@ public class MainActivity extends Activity implements View.OnClickListener{
 		openAssetWithSensitivity.setOnClickListener(this);
 		sendVirus.setOnClickListener(this);
 		sendEmail.setOnClickListener(this);
-		sendEmailWithAttachment.setOnClickListener(this);
-		install.setOnClickListener(this);
 		createAsset.setOnClickListener(this);
 		copyAsset.setOnClickListener(this);
 		sendAsset.setOnClickListener(this);
@@ -163,7 +160,6 @@ public class MainActivity extends Activity implements View.OnClickListener{
 			sendVirusProperties.put("severity","high");
 			Action sendVirusAction = new Action("virus_found", System.currentTimeMillis());
 			sendUserActionsToRemoteMusesService(sendVirusAction, sendVirusProperties);
-//			showResultDialog("Your device is infected .. please contact admin..", FeedbackActivity.ACTION_RESPONSE_DENIED);
 			break;
 		
 		case R.id.send_email_event_btn :
@@ -174,39 +170,12 @@ public class MainActivity extends Activity implements View.OnClickListener{
 			sendEmailProperties.put("bcc", "hidden.reiceiver@generic.com");
 			sendEmailProperties.put("subject", "MUSES sensor status subject");
 			sendEmailProperties.put("path", "/sdcard/someattachment.pdf");
-			sendEmailProperties.put("noAttachments", "0");
+			sendEmailProperties.put("noAttachments", "1");
 			sendEmailProperties.put("attachmentInfo", "");
 			Action sendEmailAction = new Action("ACTION_SEND_MAIL", System.currentTimeMillis());
 			sendUserActionsToRemoteMusesService(sendEmailAction, sendEmailProperties);
-//			showResultDialog("You are not allowed to send email with this email client", FeedbackActivity.ACTION_RESPONSE_DENIED);
 			break;
 		
-		case R.id.send_email_with_attachment_event_btn :
-			Map<String, String> sendEmailAttachmentProperties = new HashMap<String, String>();
-			sendEmailAttachmentProperties.put("from", "max.mustermann@generic.com");
-			sendEmailAttachmentProperties.put("to", "the.reiceiver@generic.com, another.direct.receiver@generic.com");
-			sendEmailAttachmentProperties.put("cc", "other.listener@generic.com, 2other.listener@generic.com");
-			sendEmailAttachmentProperties.put("bcc", "hidden.reiceiver@generic.com");
-			sendEmailAttachmentProperties.put("subject", "MUSES sensor status subject");
-			sendEmailAttachmentProperties.put("path", "/sdcard/someattachment");
-			sendEmailAttachmentProperties.put("noAttachments", "1");
-			sendEmailAttachmentProperties.put("attachmentInfo", "pdf");
-			Action sendEmailAttachmentAction = new Action("ACTION_SEND_MAIL", System.currentTimeMillis());
-			sendUserActionsToRemoteMusesService(sendEmailAttachmentAction, sendEmailAttachmentProperties);
-//			showResultDialog("You are not allowed to attach this file", FeedbackActivity.ACTION_RESPONSE_DENIED);
-			break;
-		
-		case R.id.install_btn :
-			Map<String, String> installProperties = new HashMap<String, String>();
-			installProperties.put("protocol","https");
-			installProperties.put("url","https://...");
-			installProperties.put("resourceId","file1.png");
-			installProperties.put("method","post");
-			Action installAction = new Action("install", System.currentTimeMillis());
-			showResultDialog("You are not allowed to install this application", FeedbackActivity.ACTION_RESPONSE_DENIED);
-			//sendUserActionsToRemoteMusesService(installAction,installProperties);
-			break;
-
 		case R.id.create_asset_btn :
 			Map<String, String> createAssetProperties = new HashMap<String, String>();
 			createAssetProperties.put("protocol","https");
@@ -214,7 +183,6 @@ public class MainActivity extends Activity implements View.OnClickListener{
 			createAssetProperties.put("resourceId","file1.png");
 			createAssetProperties.put("method","post");
 			Action createAssetAction = new Action("install", System.currentTimeMillis());
-			showResultDialog("You are not allowed to install this application", FeedbackActivity.ACTION_RESPONSE_DENIED);
 			//sendUserActionsToRemoteMusesService(createAssetAction,createAssetProperties);
 			break;
 			
@@ -225,7 +193,6 @@ public class MainActivity extends Activity implements View.OnClickListener{
 			copyAssetProperties.put("resourceId","file1.png");
 			copyAssetProperties.put("method","post");
 			Action copyAssetAction = new Action("copy_asset", System.currentTimeMillis());
-			showResultDialog("You are not allowed to install this application", FeedbackActivity.ACTION_RESPONSE_DENIED);
 			//sendUserActionsToRemoteMusesService(copyAssetAction,copyAssetProperties);
 			break;
 
@@ -236,7 +203,6 @@ public class MainActivity extends Activity implements View.OnClickListener{
 			sendAssetProperties.put("resourceId","file1.png");
 			sendAssetProperties.put("method","post");
 			Action sendAssetAction = new Action("install", System.currentTimeMillis());
-			showResultDialog("You are not allowed to install this application", FeedbackActivity.ACTION_RESPONSE_DENIED);
 			//sendUserActionsToRemoteMusesService(sendAssetAction,sendAssetProperties);
 			break;
 

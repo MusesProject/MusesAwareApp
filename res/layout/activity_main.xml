@@ -65,20 +65,6 @@
                 android:text="@string/send_email_event" />
 
             <Button
-                android:id="@+id/send_email_with_attachment_event_btn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:contentDescription="email attachment event"
-                android:text="@string/send_email_with_attachment" />
-
-            <Button
-                android:id="@+id/install_btn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:contentDescription="install"
-                android:text="@string/install" />
-
-            <Button
                 android:id="@+id/create_asset_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
