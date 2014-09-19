@@ -14,7 +14,8 @@
 	<string name="create_asset">create asset</string>
 	<string name="copy_asset">copy asset</string>
 	<string name="send_asset">send asset</string>
-	
+	<string name="decrypt_asset">decrypt asset</string>
+		
 	
 	<!-- Feedback dialog strings -->
 	<!-- Copied for time bring delete later -->

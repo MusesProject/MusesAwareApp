@@ -108,6 +108,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
 			openAssetProperties.put("resourcePath","/sdcard/Swe/MUSES_beer_competition.txt");
 			Action openAssetAction = new Action("open_asset", System.currentTimeMillis());
 			sendUserActionsToRemoteMusesService(openAssetAction, openAssetProperties);
+//			openFileInView(currentSelectedFile);
 			break;
 		
 		case R.id.open_internal_asset_btn :
@@ -118,7 +119,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
 			openInternalAssetProperties.put("resourcePath","/sdcard/Swe/MUSES_internal_asset.txt");
 			Action openInternalAssetAction = new Action("open_asset", System.currentTimeMillis());
 			sendUserActionsToRemoteMusesService(openInternalAssetAction, openInternalAssetProperties);
-			openFileInView(currentSelectedFile);
+//			openFileInView(currentSelectedFile);
 			break;
 		
 		case R.id.open_conf_btn :
@@ -126,9 +127,10 @@ public class MainActivity extends Activity implements View.OnClickListener{
 			Map<String, String> openConfAssetProperties = new HashMap<String, String>();
 			openConfAssetProperties.put("resourceName","statistics");
 			openConfAssetProperties.put("resourceType","sensitive");
-			openConfAssetProperties.put("resourcePath","/sdcard/Swe/MUSES_partner_grades.txt");
+			openConfAssetProperties.put("resourcePath","/sdcard/Swe/MUSES_confidential_doc.txt");
 			Action openConfAssetAction = new Action("open_asset", System.currentTimeMillis());
 			sendUserActionsToRemoteMusesService(openConfAssetAction, openConfAssetProperties);
+//			openFileInView(currentSelectedFile);
 			break;
 		
 		case R.id.open_strictly_conf_btn :
@@ -138,8 +140,8 @@ public class MainActivity extends Activity implements View.OnClickListener{
 			openStrictlyConfAssetProperties.put("resourceType","sensitive");
 			openStrictlyConfAssetProperties.put("resourcePath","/sdcard/Swe/MUSES_strictly_confidential.txt");
 			Action openStrictlyConfAssetAction = new Action("open_asset", System.currentTimeMillis());
-//			sendUserActionsToRemoteMusesService(openStrictlyConfAssetAction, openStrictlyConfAssetProperties);
-			showResultDialog("You are not allowed to open this asset", FeedbackActivity.ACTION_RESPONSE_DENIED);
+			sendUserActionsToRemoteMusesService(openStrictlyConfAssetAction, openStrictlyConfAssetProperties);
+//			showResultDialog("You are not allowed to open this asset", FeedbackActivity.ACTION_RESPONSE_DENIED);
 			break;
 		
 		case R.id.open_asset_with_sensitivity_btn :
@@ -149,8 +151,8 @@ public class MainActivity extends Activity implements View.OnClickListener{
 			openAssetWithSensitivityProperties.put("resourcePath","/sdcard/Swe/MUSES_partner_grades.txt");
 			openAssetWithSensitivityProperties.put("sensitivity_level", "internal");	
 			Action openAssetWithSensitivityAction = new Action("open_asset", System.currentTimeMillis());
-//			sendUserActionsToRemoteMusesService(openAssetWithSensitivityAction, openAssetWithSensitivityProperties);
-			showResultDialog("Not allowed", FeedbackActivity.ACTION_RESPONSE_DENIED);
+			sendUserActionsToRemoteMusesService(openAssetWithSensitivityAction, openAssetWithSensitivityProperties);
+//			showResultDialog("Not allowed", FeedbackActivity.ACTION_RESPONSE_DENIED);
 			break;
 		
 		case R.id.send_virus_event_btn :
@@ -203,6 +205,16 @@ public class MainActivity extends Activity implements View.OnClickListener{
 			sendAssetProperties.put("resourceId","file1.png");
 			sendAssetProperties.put("method","post");
 			Action sendAssetAction = new Action("install", System.currentTimeMillis());
+			//sendUserActionsToRemoteMusesService(sendAssetAction,sendAssetProperties);
+			break;
+			
+		case R.id.decrypt_asset_btn :
+			Map<String, String> sendDecryptProperties = new HashMap<String, String>();
+			sendDecryptProperties.put("action_type","decrypt");
+			sendDecryptProperties.put("decryption_status","successfull");
+			sendDecryptProperties.put("attempts","0");
+			sendDecryptProperties.put("path","/sdcard/Swe/Confidential/MUSES_Confidential_doc.txt");
+			Action sendDecryptAction = new Action("encrypt_event", System.currentTimeMillis());
 			//sendUserActionsToRemoteMusesService(sendAssetAction,sendAssetProperties);
 			break;
 

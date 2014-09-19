@@ -63,7 +63,12 @@
                 android:layout_height="wrap_content"
                 android:contentDescription="email event"
                 android:text="@string/send_email_event" />
-
+            <Button
+                android:id="@+id/decrypt_asset_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="decrypt asset"
+                android:text="@string/decrypt_asset" />
             <Button
                 android:id="@+id/create_asset_btn"
                 android:layout_width="match_parent"
