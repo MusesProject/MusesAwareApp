@@ -106,6 +106,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
 			openAssetProperties.put("resourceName","statistics");
 			openAssetProperties.put("resourceType","insensitive");
 			openAssetProperties.put("resourcePath","/sdcard/Swe/MUSES_beer_competition.txt");
+			openAssetProperties.put("path","/sdcard/Swe/MUSES_beer_competition.txt");
 			Action openAssetAction = new Action("open_asset", System.currentTimeMillis());
 			sendUserActionsToRemoteMusesService(openAssetAction, openAssetProperties);
 //			openFileInView(currentSelectedFile);
@@ -117,6 +118,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
 			openInternalAssetProperties.put("resourceName","statistics");
 			openInternalAssetProperties.put("resourceType","insensitive");
 			openInternalAssetProperties.put("resourcePath","/sdcard/Swe/MUSES_internal_asset.txt");
+			openInternalAssetProperties.put("path","/sdcard/Swe/MUSES_internal_asset.txt");
 			Action openInternalAssetAction = new Action("open_asset", System.currentTimeMillis());
 			sendUserActionsToRemoteMusesService(openInternalAssetAction, openInternalAssetProperties);
 //			openFileInView(currentSelectedFile);
@@ -127,6 +129,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
 			Map<String, String> openConfAssetProperties = new HashMap<String, String>();
 			openConfAssetProperties.put("resourceName","statistics");
 			openConfAssetProperties.put("resourceType","sensitive");
+			openConfAssetProperties.put("path","/sdcard/Swe/MUSES_confidential_doc.txt");
 			openConfAssetProperties.put("resourcePath","/sdcard/Swe/MUSES_confidential_doc.txt");
 			Action openConfAssetAction = new Action("open_asset", System.currentTimeMillis());
 			sendUserActionsToRemoteMusesService(openConfAssetAction, openConfAssetProperties);
@@ -138,6 +141,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
 			Map<String, String> openStrictlyConfAssetProperties = new HashMap<String, String>();
 			openStrictlyConfAssetProperties.put("resourceName","statistics");
 			openStrictlyConfAssetProperties.put("resourceType","sensitive");
+			openStrictlyConfAssetProperties.put("path","/sdcard/Swe/MUSES_strictly_confidential.txt");
 			openStrictlyConfAssetProperties.put("resourcePath","/sdcard/Swe/MUSES_strictly_confidential.txt");
 			Action openStrictlyConfAssetAction = new Action("open_asset", System.currentTimeMillis());
 			sendUserActionsToRemoteMusesService(openStrictlyConfAssetAction, openStrictlyConfAssetProperties);
@@ -149,6 +153,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
 			openAssetWithSensitivityProperties.put("resourceName","statistics");
 			openAssetWithSensitivityProperties.put("resourceType","sensitive");
 			openAssetWithSensitivityProperties.put("resourcePath","/sdcard/Swe/MUSES_partner_grades.txt");
+			openAssetWithSensitivityProperties.put("path","/sdcard/Swe/MUSES_partner_grades.txt");
 			openAssetWithSensitivityProperties.put("sensitivity_level", "internal");	
 			Action openAssetWithSensitivityAction = new Action("open_asset", System.currentTimeMillis());
 			sendUserActionsToRemoteMusesService(openAssetWithSensitivityAction, openAssetWithSensitivityProperties);
