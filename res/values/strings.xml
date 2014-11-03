@@ -8,6 +8,7 @@
 	<string name="open_strictly_confidential">open strictly confidential asset</string>
 	<string name="open_asset_with_sensitivity">open asset with sensitivity level</string>
 	<string name="send_virus_event">virus found</string>
+	<string name="virus_cleaned_even_btn">virus cleaned</string>
 	<string name="send_email_event">send email</string>
 	<string name="send_email_with_attachment">send email with attachment</string>
 	<string name="install">install application</string>

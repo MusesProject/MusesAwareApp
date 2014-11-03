@@ -40,6 +40,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import eu.musesproject.client.contextmonitoring.service.aidl.Action;
 import eu.musesproject.musesawareapp.R;
+//import eu.musesproject.musesawareapp.folder.FileChooser;
 import eu.musesproject.musesawareapp.sensorserviceconsumer.MusesServiceConsumer;
 import eu.musesproject.musesawareapp.sensorserviceconsumer.ServiceModel;
 
@@ -47,7 +48,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
 
 	private static String TAG = MainActivity.class.getSimpleName();
 	private Button openPublicAsset,openInternalAsset,openConfAsset,openStrictlyConfAsset,openAssetWithSensitivity,
-				   sendVirus,sendEmail,
+				   sendVirus,sendEmail,virusCleaned,
 				   createAsset,copyAsset,sendAsset; 
 	private TextView resultView;
 	// Muses Service
@@ -71,6 +72,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
 		openAssetWithSensitivity = (Button) findViewById(R.id.open_asset_with_sensitivity_btn);
 		sendVirus = (Button) findViewById(R.id.send_virus_event_btn);
 		sendEmail = (Button) findViewById(R.id.send_email_event_btn);
+		virusCleaned = (Button) findViewById(R.id.virus_cleaned_event_btn);
 		createAsset = (Button) findViewById(R.id.create_asset_btn);
 		copyAsset = (Button) findViewById(R.id.copy_asset_btn);
 		sendAsset = (Button) findViewById(R.id.send_asset_btn);
@@ -83,6 +85,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
 		openAssetWithSensitivity.setOnClickListener(this);
 		sendVirus.setOnClickListener(this);
 		sendEmail.setOnClickListener(this);
+		virusCleaned.setOnClickListener(this);
 		createAsset.setOnClickListener(this);
 		copyAsset.setOnClickListener(this);
 		sendAsset.setOnClickListener(this);
@@ -105,8 +108,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
 			Map<String, String> openAssetProperties = new HashMap<String, String>();
 			openAssetProperties.put("resourceName","statistics");
 			openAssetProperties.put("resourceType","insensitive");
-			openAssetProperties.put("resourcePath","/sdcard/Swe/MUSES_beer_competition.txt");
-			openAssetProperties.put("path","/sdcard/Swe/MUSES_beer_competition.txt");
+			openAssetProperties.put("path","/sdcard/aware_app_remote_files/MUSES_beer_competition.txt");
 			Action openAssetAction = new Action("open_asset", System.currentTimeMillis());
 			sendUserActionsToRemoteMusesService(openAssetAction, openAssetProperties);
 //			openFileInView(currentSelectedFile);
@@ -117,8 +119,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
 			Map<String, String> openInternalAssetProperties = new HashMap<String, String>();
 			openInternalAssetProperties.put("resourceName","statistics");
 			openInternalAssetProperties.put("resourceType","insensitive");
-			openInternalAssetProperties.put("resourcePath","/sdcard/Swe/MUSES_internal_asset.txt");
-			openInternalAssetProperties.put("path","/sdcard/Swe/MUSES_internal_asset.txt");
+			openInternalAssetProperties.put("path","/sdcard/aware_app_remote_files/MUSES_internal_asset.txt");
 			Action openInternalAssetAction = new Action("open_asset", System.currentTimeMillis());
 			sendUserActionsToRemoteMusesService(openInternalAssetAction, openInternalAssetProperties);
 //			openFileInView(currentSelectedFile);
@@ -129,8 +130,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
 			Map<String, String> openConfAssetProperties = new HashMap<String, String>();
 			openConfAssetProperties.put("resourceName","statistics");
 			openConfAssetProperties.put("resourceType","sensitive");
-			openConfAssetProperties.put("path","/sdcard/Swe/MUSES_confidential_doc.txt");
-			openConfAssetProperties.put("resourcePath","/sdcard/Swe/MUSES_confidential_doc.txt");
+			openConfAssetProperties.put("path","/sdcard/aware_app_remote_files/MUSES_confidential_doc.txt");
 			Action openConfAssetAction = new Action("open_asset", System.currentTimeMillis());
 			sendUserActionsToRemoteMusesService(openConfAssetAction, openConfAssetProperties);
 //			openFileInView(currentSelectedFile);
@@ -141,8 +141,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
 			Map<String, String> openStrictlyConfAssetProperties = new HashMap<String, String>();
 			openStrictlyConfAssetProperties.put("resourceName","statistics");
 			openStrictlyConfAssetProperties.put("resourceType","sensitive");
-			openStrictlyConfAssetProperties.put("path","/sdcard/Swe/MUSES_strictly_confidential.txt");
-			openStrictlyConfAssetProperties.put("resourcePath","/sdcard/Swe/MUSES_strictly_confidential.txt");
+			openStrictlyConfAssetProperties.put("path","/sdcard/aware_app_remote_files/MUSES_strictly_confidential.txt");
 			Action openStrictlyConfAssetAction = new Action("open_asset", System.currentTimeMillis());
 			sendUserActionsToRemoteMusesService(openStrictlyConfAssetAction, openStrictlyConfAssetProperties);
 //			showResultDialog("You are not allowed to open this asset", FeedbackActivity.ACTION_RESPONSE_DENIED);
@@ -152,8 +151,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
 			Map<String, String> openAssetWithSensitivityProperties = new HashMap<String, String>();
 			openAssetWithSensitivityProperties.put("resourceName","statistics");
 			openAssetWithSensitivityProperties.put("resourceType","sensitive");
-			openAssetWithSensitivityProperties.put("resourcePath","/sdcard/Swe/MUSES_partner_grades.txt");
-			openAssetWithSensitivityProperties.put("path","/sdcard/Swe/MUSES_partner_grades.txt");
+			openAssetWithSensitivityProperties.put("path","/sdcard/aware_app_remote_files/MUSES_partner_grades.txt");
 			openAssetWithSensitivityProperties.put("sensitivity_level", "internal");	
 			Action openAssetWithSensitivityAction = new Action("open_asset", System.currentTimeMillis());
 			sendUserActionsToRemoteMusesService(openAssetWithSensitivityAction, openAssetWithSensitivityProperties);
@@ -162,7 +160,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
 		
 		case R.id.send_virus_event_btn :
 			Map<String, String> sendVirusProperties = new HashMap<String, String>();
-			sendVirusProperties.put("path","/sdcard/Swe/virus.txt");
+			sendVirusProperties.put("path","/sdcard/aware_app_remote_files/virus.txt");
 			sendVirusProperties.put("name","serious_virus");
 			sendVirusProperties.put("severity","high");
 			Action sendVirusAction = new Action("virus_found", System.currentTimeMillis());
@@ -182,7 +180,20 @@ public class MainActivity extends Activity implements View.OnClickListener{
 			Action sendEmailAction = new Action("ACTION_SEND_MAIL", System.currentTimeMillis());
 			sendUserActionsToRemoteMusesService(sendEmailAction, sendEmailProperties);
 			break;
-		
+
+		case R.id.virus_cleaned_event_btn :
+//			Map<String, String> virusCleanedProperties = new HashMap<String, String>();
+//			virusCleanedProperties.put("path","/sdcard/aware_app_remote_files/virus.txt");
+//			virusCleanedProperties.put("name","serious_virus");
+//			virusCleanedProperties.put("severity","high");
+//			virusCleanedProperties.put("clean_type","quarantine");
+//			Action virusCleanedAction = new Action("virus_cleaned", System.currentTimeMillis());
+//			sendUserActionsToRemoteMusesService(virusCleanedAction, virusCleanedProperties);
+			//Intent intent1 = new Intent(this, FileChooser.class);
+			//startActivityForResult(intent1,1);
+			
+			break;
+			
 		case R.id.create_asset_btn :
 			Map<String, String> createAssetProperties = new HashMap<String, String>();
 			createAssetProperties.put("protocol","https");
@@ -312,4 +323,22 @@ public class MainActivity extends Activity implements View.OnClickListener{
 		showFeedbackIntent.putExtras(extras);
 		startActivity(showFeedbackIntent);
 	}
+	
+	
+    String curFileName;
+ // Listen for results.
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        // See which child activity is calling us back.
+    	if (requestCode == 1){
+    		if (resultCode == RESULT_OK) { 
+    			curFileName = data.getStringExtra("GetFileName"); 
+            	Log.d(TAG, "Current File Name:_" + curFileName);
+    			//edittext.setText(curFileName);
+    		}
+    	 }
+    }
+	
+	
+	
+	
 }
