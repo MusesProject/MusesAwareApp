@@ -191,6 +191,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
 //			sendUserActionsToRemoteMusesService(virusCleanedAction, virusCleanedProperties);
 			//Intent intent1 = new Intent(this, FileChooser.class);
 			//startActivityForResult(intent1,1);
+
 			
 			break;
 			
