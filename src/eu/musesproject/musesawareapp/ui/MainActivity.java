@@ -104,7 +104,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.open_btn :
-			currentSelectedFile = "/sdcard/Swe/MUSES_beer_competition.txt";
+			currentSelectedFile = "/sdcard/aware_app_remote_files/MUSES_beer_competition.txt";
 			Map<String, String> openAssetProperties = new HashMap<String, String>();
 			openAssetProperties.put("resourceName","statistics");
 			openAssetProperties.put("resourceType","insensitive");
@@ -115,7 +115,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
 			break;
 		
 		case R.id.open_internal_asset_btn :
-			currentSelectedFile = "/sdcard/Swe/MUSES_internal_asset.txt";
+			currentSelectedFile = "/sdcard/aware_app_remote_files/MUSES_internal_asset.txt";
 			Map<String, String> openInternalAssetProperties = new HashMap<String, String>();
 			openInternalAssetProperties.put("resourceName","statistics");
 			openInternalAssetProperties.put("resourceType","insensitive");
@@ -126,7 +126,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
 			break;
 		
 		case R.id.open_conf_btn :
-			currentSelectedFile = "/sdcard/Swe/MUSES_partner_grades.txt";
+			currentSelectedFile = "/sdcard/aware_app_remote_files/MUSES_partner_grades.txt";
 			Map<String, String> openConfAssetProperties = new HashMap<String, String>();
 			openConfAssetProperties.put("resourceName","statistics");
 			openConfAssetProperties.put("resourceType","sensitive");
@@ -137,7 +137,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
 			break;
 		
 		case R.id.open_strictly_conf_btn :
-			currentSelectedFile = "/sdcard/Swe/MUSES_strictly_confidential.txt";
+			currentSelectedFile = "/sdcard/aware_app_remote_files/MUSES_strictly_confidential.txt";
 			Map<String, String> openStrictlyConfAssetProperties = new HashMap<String, String>();
 			openStrictlyConfAssetProperties.put("resourceName","statistics");
 			openStrictlyConfAssetProperties.put("resourceType","sensitive");
