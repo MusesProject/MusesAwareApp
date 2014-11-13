@@ -40,7 +40,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import eu.musesproject.client.contextmonitoring.service.aidl.Action;
 import eu.musesproject.musesawareapp.R;
-//import eu.musesproject.musesawareapp.folder.FileChooser;
 import eu.musesproject.musesawareapp.sensorserviceconsumer.MusesServiceConsumer;
 import eu.musesproject.musesawareapp.sensorserviceconsumer.ServiceModel;
 
@@ -57,40 +56,40 @@ public class MainActivity extends Activity implements View.OnClickListener{
 	// messages from service consumer
 	public static final int ACTION_ACCEPTED = 1;
 	public static final int ACTION_DENIED = 0;
+	
 	private String currentSelectedFile = "";
 	private ProgressDialog pDialog;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
-		
-		openPublicAsset = (Button) findViewById(R.id.open_btn);
-		openInternalAsset = (Button) findViewById(R.id.open_internal_asset_btn);
-		openConfAsset = (Button) findViewById(R.id.open_conf_btn);
-		openStrictlyConfAsset = (Button) findViewById(R.id.open_strictly_conf_btn);
-		openAssetWithSensitivity = (Button) findViewById(R.id.open_asset_with_sensitivity_btn);
-		sendVirus = (Button) findViewById(R.id.send_virus_event_btn);
-		sendEmail = (Button) findViewById(R.id.send_email_event_btn);
-		virusCleaned = (Button) findViewById(R.id.virus_cleaned_event_btn);
-		createAsset = (Button) findViewById(R.id.create_asset_btn);
-		copyAsset = (Button) findViewById(R.id.copy_asset_btn);
-		sendAsset = (Button) findViewById(R.id.send_asset_btn);
-		resultView = (TextView) findViewById(R.id.result_text_view);
-		
-		openPublicAsset.setOnClickListener(this);
-		openInternalAsset.setOnClickListener(this);
-		openConfAsset.setOnClickListener(this);
-		openStrictlyConfAsset.setOnClickListener(this);
-		openAssetWithSensitivity.setOnClickListener(this);
-		sendVirus.setOnClickListener(this);
-		sendEmail.setOnClickListener(this);
-		virusCleaned.setOnClickListener(this);
-		createAsset.setOnClickListener(this);
-		copyAsset.setOnClickListener(this);
-		sendAsset.setOnClickListener(this);
-		regiterForMusesService();
-
+//		setContentView(R.layout.activity_main);
+//		openPublicAsset = (Button) findViewById(R.id.open_btn);
+//		openInternalAsset = (Button) findViewById(R.id.open_internal_asset_btn);
+//		openConfAsset = (Button) findViewById(R.id.open_conf_btn);
+//		openStrictlyConfAsset = (Button) findViewById(R.id.open_strictly_conf_btn);
+//		openAssetWithSensitivity = (Button) findViewById(R.id.open_asset_with_sensitivity_btn);
+//		sendVirus = (Button) findViewById(R.id.send_virus_event_btn);
+//		sendEmail = (Button) findViewById(R.id.send_email_event_btn);
+//		virusCleaned = (Button) findViewById(R.id.virus_cleaned_event_btn);
+//		createAsset = (Button) findViewById(R.id.create_asset_btn);
+//		copyAsset = (Button) findViewById(R.id.copy_asset_btn);
+//		sendAsset = (Button) findViewById(R.id.send_asset_btn);
+//		resultView = (TextView) findViewById(R.id.result_text_view);
+//		
+//		openPublicAsset.setOnClickListener(this);
+//		openInternalAsset.setOnClickListener(this);
+//		openConfAsset.setOnClickListener(this);
+//		openStrictlyConfAsset.setOnClickListener(this);
+//		openAssetWithSensitivity.setOnClickListener(this);
+//		sendVirus.setOnClickListener(this);
+//		sendEmail.setOnClickListener(this);
+//		virusCleaned.setOnClickListener(this);
+//		createAsset.setOnClickListener(this);
+//		copyAsset.setOnClickListener(this);
+//		sendAsset.setOnClickListener(this);
+		//regiterForMusesService();
+		startActivity(new Intent(this, ShowActivity.class));
 	}
 
 	@Override
@@ -130,7 +129,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
 			Map<String, String> openConfAssetProperties = new HashMap<String, String>();
 			openConfAssetProperties.put("resourceName","statistics");
 			openConfAssetProperties.put("resourceType","sensitive");
-			openConfAssetProperties.put("path","/sdcard/aware_app_remote_files/MUSES_confidential_doc.txt");
+			openConfAssetProperties.put("path","/sdcard/aware_app_remote_files/MUSES_partner_grades.txt");
 			Action openConfAssetAction = new Action("open_asset", System.currentTimeMillis());
 			sendUserActionsToRemoteMusesService(openConfAssetAction, openConfAssetProperties);
 //			openFileInView(currentSelectedFile);
@@ -151,7 +150,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
 			Map<String, String> openAssetWithSensitivityProperties = new HashMap<String, String>();
 			openAssetWithSensitivityProperties.put("resourceName","statistics");
 			openAssetWithSensitivityProperties.put("resourceType","sensitive");
-			openAssetWithSensitivityProperties.put("path","/sdcard/aware_app_remote_files/MUSES_partner_grades.txt");
+			openAssetWithSensitivityProperties.put("path","/sdcard/Swe/MUSES_partner_grades.txt");
 			openAssetWithSensitivityProperties.put("sensitivity_level", "internal");	
 			Action openAssetWithSensitivityAction = new Action("open_asset", System.currentTimeMillis());
 			sendUserActionsToRemoteMusesService(openAssetWithSensitivityAction, openAssetWithSensitivityProperties);
@@ -182,19 +181,16 @@ public class MainActivity extends Activity implements View.OnClickListener{
 			break;
 
 		case R.id.virus_cleaned_event_btn :
-//			Map<String, String> virusCleanedProperties = new HashMap<String, String>();
-//			virusCleanedProperties.put("path","/sdcard/aware_app_remote_files/virus.txt");
-//			virusCleanedProperties.put("name","serious_virus");
-//			virusCleanedProperties.put("severity","high");
-//			virusCleanedProperties.put("clean_type","quarantine");
-//			Action virusCleanedAction = new Action("virus_cleaned", System.currentTimeMillis());
-//			sendUserActionsToRemoteMusesService(virusCleanedAction, virusCleanedProperties);
-			//Intent intent1 = new Intent(this, FileChooser.class);
-			//startActivityForResult(intent1,1);
-
-			
+			Map<String, String> virusCleanedProperties = new HashMap<String, String>();
+			virusCleanedProperties.put("path","/sdcard/aware_app_remote_files/virus.txt");
+			virusCleanedProperties.put("name","serious_virus");
+			virusCleanedProperties.put("severity","high");
+			virusCleanedProperties.put("clean_type","quarantine");
+			Action virusCleanedAction = new Action("virus_cleaned", System.currentTimeMillis());
+			sendUserActionsToRemoteMusesService(virusCleanedAction, virusCleanedProperties);
+	
 			break;
-			
+		
 		case R.id.create_asset_btn :
 			Map<String, String> createAssetProperties = new HashMap<String, String>();
 			createAssetProperties.put("protocol","https");
@@ -252,7 +248,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
 	/**
 	 * Registers the Muses Service 
 	 */
-
+	
 	private void regiterForMusesService() {
 		musesService = new MusesServiceConsumer(getApplicationContext(), callbackHandler);
 		serviceModel = ServiceModel.getInstance();
@@ -327,7 +323,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
 	
 	
     String curFileName;
- // Listen for results.
+    // Listen for results.
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
         // See which child activity is calling us back.
     	if (requestCode == 1){
