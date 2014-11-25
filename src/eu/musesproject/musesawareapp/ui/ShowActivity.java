@@ -119,13 +119,14 @@ public class ShowActivity extends Activity implements OnItemClickListener {
 //			break;
 			
 		case 2: // Send virus event
+			
 			Map<String, String> sendVirusProperties = new HashMap<String, String>();
 			sendVirusProperties.put("path","/sdcard/aware_app_remote_files/virus.txt");
 			sendVirusProperties.put("name","serious_virus");
 			sendVirusProperties.put("severity","high");
 			Action sendVirusAction = new Action("virus_found", System.currentTimeMillis());
 			sendUserActionsToRemoteMusesService(sendVirusAction, sendVirusProperties);
-			break;
+
 			
 //		case 6: // Send email event
 //			Map<String, String> sendEmailProperties = new HashMap<String, String>();
@@ -141,15 +142,15 @@ public class ShowActivity extends Activity implements OnItemClickListener {
 //			sendUserActionsToRemoteMusesService(sendEmailAction, sendEmailProperties);
 //			break;
 //			
-//		case 7: // Virus cleaned event // FIXME not implemented on Server yet
-//			Map<String, String> virusCleanedProperties = new HashMap<String, String>();
-//			virusCleanedProperties.put("path","/sdcard/aware_app_remote_files/virus.txt");
-//			virusCleanedProperties.put("name","serious_virus");
-//			virusCleanedProperties.put("severity","high");
-//			virusCleanedProperties.put("clean_type","quarantine");
-//			Action virusCleanedAction = new Action("virus_cleaned", System.currentTimeMillis());
-//			sendUserActionsToRemoteMusesService(virusCleanedAction, virusCleanedProperties);
-//			break;
+		case 3: // Virus cleaned event // FIXME not implemented on Server yet
+			Map<String, String> virusCleanedProperties = new HashMap<String, String>();
+			virusCleanedProperties.put("path","/sdcard/aware_app_remote_files/virus.txt");
+			virusCleanedProperties.put("name","serious_virus");
+			virusCleanedProperties.put("severity","high");
+			virusCleanedProperties.put("clean_type","quarantine");
+			Action virusCleanedAction = new Action("virus_cleaned", System.currentTimeMillis());
+			sendUserActionsToRemoteMusesService(virusCleanedAction, virusCleanedProperties);
+			break;
 //			 
 //		case 8: // Create asset
 //			Map<String, String> createAssetProperties = new HashMap<String, String>();
@@ -274,6 +275,9 @@ public class ShowActivity extends Activity implements OnItemClickListener {
 			}
 			if (i==2) {
 				map.put(KEY_IMAGE_URL, Integer.toString(virusId));
+			}
+			if (i==3) {
+				map.put(KEY_IMAGE_URL, Integer.toString(publicId));
 			}
 
 			assetList.add(map);
