@@ -78,16 +78,6 @@ public class ShowActivity extends Activity implements OnItemClickListener {
 			sendUserActionsToRemoteMusesService(openAssetAction, openAssetProperties);
 			break;
 			
-//		case 1: // Open internal asset
-//			currentSelectedFile = "/sdcard/Swe/MUSES_internal_asset.txt";
-//			Map<String, String> openInternalAssetProperties = new HashMap<String, String>();
-//			openInternalAssetProperties.put("resourceName","statistics");
-//			openInternalAssetProperties.put("resourceType","insensitive");
-//			openInternalAssetProperties.put("path","/sdcard/aware_app_remote_files/MUSES_internal_asset.txt");
-//			Action openInternalAssetAction = new Action("open_asset", System.currentTimeMillis());
-//			sendUserActionsToRemoteMusesService(openInternalAssetAction, openInternalAssetProperties);
-//			break;
-			
 		case 1: // Open confidential asset
 			currentSelectedFile = "/sdcard/aware_app_remote_files/MUSES_confidential_doc.pdf";
 			Map<String, String> openConfAssetProperties = new HashMap<String, String>();
@@ -98,26 +88,6 @@ public class ShowActivity extends Activity implements OnItemClickListener {
 			sendUserActionsToRemoteMusesService(openConfAssetAction, openConfAssetProperties);
 			break;
 			
-//		case 3: // Open strictly confidential asset
-//			currentSelectedFile = "/sdcard/Swe/MUSES_strictly_confidential.txt";
-//			Map<String, String> openStrictlyConfAssetProperties = new HashMap<String, String>();
-//			openStrictlyConfAssetProperties.put("resourceName","statistics");
-//			openStrictlyConfAssetProperties.put("resourceType","sensitive");
-//			openStrictlyConfAssetProperties.put("path","/sdcard/aware_app_remote_files/MUSES_strictly_confidential.txt");
-//			Action openStrictlyConfAssetAction = new Action("open_asset", System.currentTimeMillis());
-//			sendUserActionsToRemoteMusesService(openStrictlyConfAssetAction, openStrictlyConfAssetProperties);
-//			break;
-				
-//		case 4: // Open asset with sensitivity level
-//			Map<String, String> openAssetWithSensitivityProperties = new HashMap<String, String>();
-//			openAssetWithSensitivityProperties.put("resourceName","statistics");
-//			openAssetWithSensitivityProperties.put("resourceType","sensitive");
-//			openAssetWithSensitivityProperties.put("path","/sdcard/aware_app_remote_files/MUSES_partner_grades.txt");
-//			openAssetWithSensitivityProperties.put("sensitivity_level", "internal");	
-//			Action openAssetWithSensitivityAction = new Action("open_asset", System.currentTimeMillis());
-//			sendUserActionsToRemoteMusesService(openAssetWithSensitivityAction, openAssetWithSensitivityProperties);
-//			break;
-			
 		case 2: // Send virus event
 			
 			Map<String, String> sendVirusProperties = new HashMap<String, String>();
@@ -126,22 +96,8 @@ public class ShowActivity extends Activity implements OnItemClickListener {
 			sendVirusProperties.put("severity","high");
 			Action sendVirusAction = new Action("virus_found", System.currentTimeMillis());
 			sendUserActionsToRemoteMusesService(sendVirusAction, sendVirusProperties);
-
+			break;
 			
-//		case 6: // Send email event
-//			Map<String, String> sendEmailProperties = new HashMap<String, String>();
-//			sendEmailProperties.put("from", "max.mustermann@generic.com");
-//			sendEmailProperties.put("to", "the.reiceiver@generic.com, another.direct.receiver@generic.com");
-//			sendEmailProperties.put("cc", "other.listener@generic.com, 2other.listener@generic.com");
-//			sendEmailProperties.put("bcc", "hidden.reiceiver@generic.com");
-//			sendEmailProperties.put("subject", "MUSES sensor status subject");
-//			sendEmailProperties.put("path", "/sdcard/someattachment.pdf");
-//			sendEmailProperties.put("noAttachments", "1");
-//			sendEmailProperties.put("attachmentInfo", "");
-//			Action sendEmailAction = new Action("ACTION_SEND_MAIL", System.currentTimeMillis());
-//			sendUserActionsToRemoteMusesService(sendEmailAction, sendEmailProperties);
-//			break;
-//			
 		case 3: // Virus cleaned event // FIXME not implemented on Server yet
 			Map<String, String> virusCleanedProperties = new HashMap<String, String>();
 			virusCleanedProperties.put("path","/sdcard/aware_app_remote_files/virus.txt");
@@ -151,6 +107,51 @@ public class ShowActivity extends Activity implements OnItemClickListener {
 			Action virusCleanedAction = new Action("virus_cleaned", System.currentTimeMillis());
 			sendUserActionsToRemoteMusesService(virusCleanedAction, virusCleanedProperties);
 			break;
+			
+		case 4: // Open internal asset
+			currentSelectedFile = "/sdcard/Swe/MUSES_internal_asset.txt";
+			Map<String, String> openInternalAssetProperties = new HashMap<String, String>();
+			openInternalAssetProperties.put("resourceName","statistics");
+			openInternalAssetProperties.put("resourceType","insensitive");
+			openInternalAssetProperties.put("path","/sdcard/aware_app_remote_files/MUSES_internal_asset.txt");
+			Action openInternalAssetAction = new Action("open_asset", System.currentTimeMillis());
+			sendUserActionsToRemoteMusesService(openInternalAssetAction, openInternalAssetProperties);
+			break;
+			
+		case 5: // Open strictly confidential asset
+			currentSelectedFile = "/sdcard/Swe/MUSES_strictly_confidential.txt";
+			Map<String, String> openStrictlyConfAssetProperties = new HashMap<String, String>();
+			openStrictlyConfAssetProperties.put("resourceName","statistics");
+			openStrictlyConfAssetProperties.put("resourceType","sensitive");
+			openStrictlyConfAssetProperties.put("path","/sdcard/aware_app_remote_files/MUSES_strictly_confidential.txt");
+			Action openStrictlyConfAssetAction = new Action("open_asset", System.currentTimeMillis());
+			sendUserActionsToRemoteMusesService(openStrictlyConfAssetAction, openStrictlyConfAssetProperties);
+			break;
+				
+		case 6: // Open asset with sensitivity level
+			Map<String, String> openAssetWithSensitivityProperties = new HashMap<String, String>();
+			openAssetWithSensitivityProperties.put("resourceName","statistics");
+			openAssetWithSensitivityProperties.put("resourceType","sensitive");
+			openAssetWithSensitivityProperties.put("path","/sdcard/aware_app_remote_files/MUSES_partner_grades.txt");
+			openAssetWithSensitivityProperties.put("sensitivity_level", "internal");	
+			Action openAssetWithSensitivityAction = new Action("open_asset", System.currentTimeMillis());
+			sendUserActionsToRemoteMusesService(openAssetWithSensitivityAction, openAssetWithSensitivityProperties);
+			break;
+		
+		case 7: // Send email event
+			Map<String, String> sendEmailProperties = new HashMap<String, String>();
+			sendEmailProperties.put("from", "max.mustermann@generic.com");
+			sendEmailProperties.put("to", "the.reiceiver@generic.com, another.direct.receiver@generic.com");
+			sendEmailProperties.put("cc", "other.listener@generic.com, 2other.listener@generic.com");
+			sendEmailProperties.put("bcc", "hidden.reiceiver@generic.com");
+			sendEmailProperties.put("subject", "MUSES sensor status subject");
+			sendEmailProperties.put("path", "/sdcard/someattachment.pdf");
+			sendEmailProperties.put("noAttachments", "1");
+			sendEmailProperties.put("attachmentInfo", "");
+			Action sendEmailAction = new Action("ACTION_SEND_MAIL", System.currentTimeMillis());
+			sendUserActionsToRemoteMusesService(sendEmailAction, sendEmailProperties);
+			break;
+			
 //			 
 //		case 8: // Create asset
 //			Map<String, String> createAssetProperties = new HashMap<String, String>();
@@ -279,7 +280,18 @@ public class ShowActivity extends Activity implements OnItemClickListener {
 			if (i==3) {
 				map.put(KEY_IMAGE_URL, Integer.toString(publicId));
 			}
-
+			if (i==4) {
+				map.put(KEY_IMAGE_URL, Integer.toString(publicId));
+			}
+			if (i==5) {
+				map.put(KEY_IMAGE_URL, Integer.toString(lockedId));
+			}
+			if (i==6) {
+				map.put(KEY_IMAGE_URL, Integer.toString(virusId));
+			}
+			if (i==7) {
+				map.put(KEY_IMAGE_URL, Integer.toString(publicId));
+			}
 			assetList.add(map);
 		}
 
