@@ -54,7 +54,7 @@
                 android:id="@+id/send_virus_event_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:contentDescription="virus event"
+                android:contentDescription="virus found"
                 android:text="@string/send_virus_event" />
 
             <Button
