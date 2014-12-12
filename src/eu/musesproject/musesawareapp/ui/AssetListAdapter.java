@@ -44,20 +44,16 @@ public class AssetListAdapter extends BaseAdapter {
 
         TextView name = (TextView)vi.findViewById(R.id.name);
         TextView sub_text = (TextView)vi.findViewById(R.id.sub_text);
-//        TextView time = (TextView)vi.findViewById(R.id.time);
         ImageView asset_image=(ImageView)vi.findViewById(R.id.asset_image);
         
-        HashMap<String, String> song = new HashMap<String, String>();
-        song = data.get(position);
+        HashMap<String, String> item = new HashMap<String, String>();
+        item = data.get(position);
         
         // Setting all values in listview
-        name.setText(song.get(ShowActivity.KEY_NAME));
-        sub_text.setText(song.get(ShowActivity.KEY_SUBTEXT));
-//        time.setText(song.get(ShowActivity.KEY_TIME));
+        name.setText(item.get(ShowActivity.KEY_NAME));
+        sub_text.setText(item.get(ShowActivity.KEY_SUBTEXT));
         // User normal android way to show image
-        asset_image.setImageDrawable(activity.getResources().getDrawable(Integer.parseInt(song.get(ShowActivity.KEY_IMAGE_URL))));;
-//        asset_image.setImageResource(activity.getApplicationContext().getResources().
-//        							 getIdentifier(song.get(ShowActivity.KEY_IMAGE_URL), null, activity.getPackageName()));
+        asset_image.setImageDrawable(activity.getResources().getDrawable(Integer.parseInt(item.get(ShowActivity.KEY_IMAGE_URL))));;
         return vi;
     }
 }

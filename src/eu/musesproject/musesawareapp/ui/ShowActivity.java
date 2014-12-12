@@ -151,7 +151,15 @@ public class ShowActivity extends Activity implements OnItemClickListener {
 			Action sendEmailAction = new Action("ACTION_SEND_MAIL", System.currentTimeMillis());
 			sendUserActionsToRemoteMusesService(sendEmailAction, sendEmailProperties);
 			break;
-			
+		case 8: // decrypt asset
+			Map<String, String> sendDecryptProperties = new HashMap<String, String>();
+			sendDecryptProperties.put("action_type","decrypt");
+			sendDecryptProperties.put("decryption_status","successfull");
+			sendDecryptProperties.put("attempts","0");
+			sendDecryptProperties.put("path","/sdcard/Swe/Confidential/MUSES_Confidential_doc.txt");
+			Action sendDecryptAction = new Action("encrypt_event", System.currentTimeMillis());
+			sendUserActionsToRemoteMusesService(sendDecryptAction,sendDecryptProperties);
+
 //			 
 //		case 8: // Create asset
 //			Map<String, String> createAssetProperties = new HashMap<String, String>();
@@ -266,7 +274,6 @@ public class ShowActivity extends Activity implements OnItemClickListener {
 			HashMap<String, String> map = new HashMap<String, String>();
 			map.put(KEY_NAME, listAssets[i]);
 			map.put(KEY_SUBTEXT, subtexts[i]);
-			map.put(KEY_TIME, "05:09");
 			// FIXME for Brussels
 			if (i==0) {
 				map.put(KEY_IMAGE_URL, Integer.toString(publicId));
@@ -291,6 +298,9 @@ public class ShowActivity extends Activity implements OnItemClickListener {
 			}
 			if (i==7) {
 				map.put(KEY_IMAGE_URL, Integer.toString(publicId));
+			}
+			if (i==8) {
+				map.put(KEY_IMAGE_URL, Integer.toString(virusId));
 			}
 			assetList.add(map);
 		}
