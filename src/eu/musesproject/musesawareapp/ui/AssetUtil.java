@@ -13,6 +13,7 @@ public class AssetUtil {
 									ShowActivity.getContextForApp().getResources().getString(R.string.open_asset_with_sensitivity),
 									ShowActivity.getContextForApp().getResources().getString(R.string.send_email_event),
 									ShowActivity.getContextForApp().getResources().getString(R.string.decrypt_asset),
+									ShowActivity.getContextForApp().getResources().getString(R.string.zone_info),
 //									ShowActivity.getContextForApp().getResources().getString(R.string.decrypt_asset),
 //									ShowActivity.getContextForApp().getResources().getString(R.string.create_asset),
 //									ShowActivity.getContextForApp().getResources().getString(R.string.copy_asset),
@@ -29,6 +30,7 @@ public class AssetUtil {
 									   "Test opening an asset by providing sensitivity",
 									   "send fake email with attachments",
 									   "decrypt an encrypted asset",
+									   "Send zone info to muses"
 //									   "test trying to decrypt an asset which is protected by encryption app.",
 //									   "not implemented yet",
 //									   "not implemented yet",
