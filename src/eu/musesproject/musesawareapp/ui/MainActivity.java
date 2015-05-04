@@ -18,10 +18,6 @@ package eu.musesproject.musesawareapp.ui;
  * limitations under the License.
  * #L%
  */
-import java.io.File;
-import java.util.HashMap;
-import java.util.Map;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ActivityManager;
@@ -42,6 +38,10 @@ import eu.musesproject.client.contextmonitoring.service.aidl.Action;
 import eu.musesproject.musesawareapp.R;
 import eu.musesproject.musesawareapp.sensorserviceconsumer.MusesServiceConsumer;
 import eu.musesproject.musesawareapp.sensorserviceconsumer.ServiceModel;
+
+import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MainActivity extends Activity implements View.OnClickListener{
 
@@ -120,6 +120,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
 			openInternalAssetProperties.put("resourceType","insensitive");
 			openInternalAssetProperties.put("path","/sdcard/aware_app_remote_files/MUSES_internal_asset.txt");
 			Action openInternalAssetAction = new Action("open_asset", System.currentTimeMillis());
+			openInternalAssetAction.setMusesAwareAppRequiresResponse(true);
 			sendUserActionsToRemoteMusesService(openInternalAssetAction, openInternalAssetProperties);
 //			openFileInView(currentSelectedFile);
 			break;
@@ -131,6 +132,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
 			openConfAssetProperties.put("resourceType","sensitive");
 			openConfAssetProperties.put("path","/sdcard/aware_app_remote_files/MUSES_partner_grades.txt");
 			Action openConfAssetAction = new Action("open_asset", System.currentTimeMillis());
+			openConfAssetAction.setMusesAwareAppRequiresResponse(true);
 			sendUserActionsToRemoteMusesService(openConfAssetAction, openConfAssetProperties);
 //			openFileInView(currentSelectedFile);
 			break;

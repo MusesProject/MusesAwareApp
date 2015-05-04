@@ -1,9 +1,10 @@
 package eu.musesproject.client.contextmonitoring.service.aidl;
+
 /*
  * #%L
- * MUSES Client
+ * musesclient
  * %%
- * Copyright (C) 2013 - 2014 Sweden Connectivity
+ * Copyright (C) 2013 - 2014 HITEC
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,12 +19,14 @@ package eu.musesproject.client.contextmonitoring.service.aidl;
  * limitations under the License.
  * #L%
  */
+
 import android.os.Parcel;
 import android.os.Parcelable;
 
 public class Action implements Parcelable {
 	private String type;
 	private long timestamp;
+	private boolean musesAwareAppRequiresResponse;
 	
 	
 	public Action() {
@@ -82,5 +85,13 @@ public class Action implements Parcelable {
 	
 	public void setTimestamp(long timestamp) {
 		this.timestamp = timestamp;
+	}
+
+	public boolean isMusesAwareAppRequiresResponse() {
+		return musesAwareAppRequiresResponse;
+	}
+
+	public void setMusesAwareAppRequiresResponse(boolean musesAwareAppRequiresResponse) {
+		this.musesAwareAppRequiresResponse = musesAwareAppRequiresResponse;
 	}
 }
