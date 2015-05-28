@@ -50,10 +50,10 @@ public class AssetListAdapter extends BaseAdapter {
         item = data.get(position);
         
         // Setting all values in listview
-        name.setText(item.get(ShowActivity.KEY_NAME));
-        sub_text.setText(item.get(ShowActivity.KEY_SUBTEXT));
+        name.setText(item.get(MainActivity.KEY_NAME));
+        sub_text.setText(item.get(MainActivity.KEY_SUBTEXT));
         // User normal android way to show image
-        asset_image.setImageDrawable(activity.getResources().getDrawable(Integer.parseInt(item.get(ShowActivity.KEY_IMAGE_URL))));;
+        asset_image.setImageDrawable(activity.getResources().getDrawable(Integer.parseInt(item.get(MainActivity.KEY_IMAGE_URL))));;
         return vi;
     }
 }
