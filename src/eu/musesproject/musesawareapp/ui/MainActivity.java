@@ -90,21 +90,21 @@ public class MainActivity extends Activity implements OnItemClickListener {
 		switch (position) {
 		// FIXME change the numbering after brussels demo
 		case 0: // Open public Asset
-			currentSelectedFile = "/sdcard/aware_app_remote_files/MUSES_beer_competition.pdf";
+			currentSelectedFile = "/sdcard/aware_app_remote_files/MUSES_beer_competition.txt"; // FIXME Sergio if absolute path can be used here or not
 			Map<String, String> openAssetProperties = new HashMap<String, String>();
 			openAssetProperties.put("resourceName","statistics");
 			openAssetProperties.put("resourceType","PUBLIC");
-			openAssetProperties.put("path","/sdcard/aware_app_remote_files/MUSES_beer_competition.pdf");
+			openAssetProperties.put("path","/sdcard/aware_app_remote_files/MUSES_beer_competition.txt");
 			Action openAssetAction = new Action("open_asset", System.currentTimeMillis());
 			sendUserActionsToRemoteMusesService(openAssetAction, openAssetProperties);
 			break;
 			
 		case 1: // Open confidential asset
-			currentSelectedFile = "/sdcard/aware_app_remote_files/MUSES_confidential_doc.pdf";
+			currentSelectedFile = "/sdcard/aware_app_remote_files/MUSES_confidential_doc.txt";
 			Map<String, String> openConfAssetProperties = new HashMap<String, String>();
 			openConfAssetProperties.put("resourceName","statistics");
 			openConfAssetProperties.put("resourceType","CONFIDENTIAL");
-			openConfAssetProperties.put("path","/sdcard/aware_app_remote_files/MUSES_confidential_doc.pdf");
+			openConfAssetProperties.put("path","/sdcard/aware_app_remote_files/MUSES_confidential.txt");
 			Action openConfAssetAction = new Action("open_asset", System.currentTimeMillis());
 			sendUserActionsToRemoteMusesService(openConfAssetAction, openConfAssetProperties);
 			break;
@@ -177,7 +177,7 @@ public class MainActivity extends Activity implements OnItemClickListener {
 			sendDecryptProperties.put("action_type","decrypt");
 			sendDecryptProperties.put("decryption_status","successfull");
 			sendDecryptProperties.put("attempts","0");
-			sendDecryptProperties.put("path","/sdcard/Swe/Confidential/MUSES_Confidential_doc.txt");
+			sendDecryptProperties.put("path","/sdcard/Swe/Confidential/MUSES_confidential.txt");
 			Action sendDecryptAction = new Action("encrypt_event", System.currentTimeMillis());
 			sendUserActionsToRemoteMusesService(sendDecryptAction,sendDecryptProperties);
 		
@@ -190,7 +190,7 @@ public class MainActivity extends Activity implements OnItemClickListener {
 
 			
 //			 
-//		case 8: // Create asset€€€
+//		case 8: // Create asset
 //			Map<String, String> createAssetProperties = new HashMap<String, String>();
 //			createAssetProperties.put("protocol","https");
 //			createAssetProperties.put("url","https://...");
