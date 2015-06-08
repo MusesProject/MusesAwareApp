@@ -21,21 +21,12 @@ package eu.musesproject.musesawareapp.ui;
  */
 
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Bundle;
-import android.os.Environment;
-import android.os.Handler;
-import android.os.Message;
-import android.os.RemoteException;
+import android.os.*;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -46,6 +37,11 @@ import eu.musesproject.client.contextmonitoring.service.aidl.Action;
 import eu.musesproject.musesawareapp.R;
 import eu.musesproject.musesawareapp.sensorserviceconsumer.MusesServiceConsumer;
 import eu.musesproject.musesawareapp.sensorserviceconsumer.ServiceModel;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MainActivity extends Activity implements OnItemClickListener {
 
@@ -95,7 +91,7 @@ public class MainActivity extends Activity implements OnItemClickListener {
 			openAssetProperties.put("resourceName","statistics");
 			openAssetProperties.put("resourceType","PUBLIC");
 			openAssetProperties.put("path","/sdcard/aware_app_remote_files/MUSES_beer_competition.txt");
-			Action openAssetAction = new Action("open_asset", System.currentTimeMillis());
+			Action openAssetAction = new Action("open_asset", System.currentTimeMillis(), true);
 			sendUserActionsToRemoteMusesService(openAssetAction, openAssetProperties);
 			break;
 			
@@ -105,7 +101,7 @@ public class MainActivity extends Activity implements OnItemClickListener {
 			openConfAssetProperties.put("resourceName","statistics");
 			openConfAssetProperties.put("resourceType","CONFIDENTIAL");
 			openConfAssetProperties.put("path","/sdcard/aware_app_remote_files/MUSES_confidential.txt");
-			Action openConfAssetAction = new Action("open_asset", System.currentTimeMillis());
+			Action openConfAssetAction = new Action("open_asset", System.currentTimeMillis(), true);
 			sendUserActionsToRemoteMusesService(openConfAssetAction, openConfAssetProperties);
 			break;
 			
