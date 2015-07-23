@@ -96,7 +96,7 @@ public class MainActivity extends Activity implements OnItemClickListener {
 			break;
 			
 		case 1: // Open confidential asset
-			currentSelectedFile = "/sdcard/aware_app_remote_files/MUSES_confidential_doc.txt";
+			currentSelectedFile = "/sdcard/aware_app_remote_files/MUSES_confidential.txt";
 			Map<String, String> openConfAssetProperties = new HashMap<String, String>();
 			openConfAssetProperties.put("resourceName","statistics");
 			openConfAssetProperties.put("resourceType","CONFIDENTIAL");
