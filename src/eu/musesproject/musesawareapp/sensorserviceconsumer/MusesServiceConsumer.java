@@ -30,6 +30,7 @@ import android.os.RemoteException;
 import android.util.Log;
 import eu.musesproject.client.contextmonitoring.service.aidl.IMusesService;
 import eu.musesproject.client.contextmonitoring.service.aidl.IMusesServiceCallback;
+import eu.musesproject.musesawareapp.ui.DebugFileLog;
 import eu.musesproject.musesawareapp.ui.MainActivity;
 
 public class MusesServiceConsumer {
@@ -62,6 +63,7 @@ public class MusesServiceConsumer {
 	
 	public void startService() {
 		Log.v(TAG, "Binding Service");
+		DebugFileLog.write(TAG+ " Binding Service");
 		Intent connectToMusesServiceIntent = new Intent(IMusesService.class.getName());
 		Bundle credentialsExtras = new Bundle();
 		credentialsExtras.putString("package", "eu.musesproject.musesawareapp");
@@ -90,6 +92,7 @@ public class MusesServiceConsumer {
 		@Override
 		public void onServiceConnected(ComponentName name, IBinder service) {
 			Log.e(TAG, "SERVICE CONNECTED");
+			DebugFileLog.write(TAG+ " SERVICE CONNECTED");
 			musesServiceConsumer = IMusesService.Stub.asInterface(service);
 			try {
 				musesServiceConsumer.registerCallback(musesServiceCallback);
@@ -101,6 +104,7 @@ public class MusesServiceConsumer {
 		@Override
 		public void onServiceDisconnected(ComponentName name) {
 			Log.e(TAG, "SERVICE DISCONNECTED");
+			DebugFileLog.write(TAG+ " SERVICE DISCONNECTED");
 			try {
 				musesServiceConsumer.unregisterCallback(musesServiceCallback);
 			} catch (RemoteException e) {
@@ -121,6 +125,7 @@ public class MusesServiceConsumer {
 		@Override
 		public void onAccept(String response) throws RemoteException {
 			Log.d(TAG, "Accept in aware app");
+			DebugFileLog.write(TAG+ " Accept in aware app");
 	    	Message msg = mHandler.obtainMessage(MainActivity.ACTION_ACCEPTED);
 			Bundle bundle = new Bundle();
 			bundle.putString("message",response);
@@ -132,6 +137,7 @@ public class MusesServiceConsumer {
 		@Override
 		public void onDeny(String response) throws RemoteException {
 			Log.e(TAG, "Deny in aware app");
+			DebugFileLog.write(TAG+ " Deny in aware app");
 	    	Message msg = mHandler.obtainMessage(MainActivity.ACTION_DENIED);
 			Bundle bundle = new Bundle();
 			bundle.putString("message", response);

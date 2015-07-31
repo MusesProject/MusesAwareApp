@@ -228,6 +228,7 @@ public class MainActivity extends Activity implements OnItemClickListener {
 
 		default:
 			Log.d(TAG, "Unknown operation..");
+			DebugFileLog.write(TAG+ " Unknown operation..");
 			break;
 		}
 	}
@@ -249,6 +250,7 @@ public class MainActivity extends Activity implements OnItemClickListener {
 		if (serviceModel.getService().musesServiceConsumer != null) {
 			try {
 				Log.d(TAG, "Sending user's action");
+				DebugFileLog.write(TAG+ " Sending user's action");
 				serviceModel.getService().musesServiceConsumer.sendUserAction(
 						action, properties);
 			} catch (RemoteException e) {
@@ -266,12 +268,14 @@ public class MainActivity extends Activity implements OnItemClickListener {
 			switch (msg.what) {
 			case ACTION_ACCEPTED:
 				Log.d(TAG, "ACTION_ACCEPTED from Muses");
+				DebugFileLog.write(TAG+ " ACTION_ACCEPTED from Muses");
 				openFileInView(currentSelectedFile);
 				Toast.makeText(getApplicationContext(), "Action Allowed..",Toast.LENGTH_SHORT).show();
 				// pDialog.dismiss();
 				break;
 			case ACTION_DENIED:
 				Log.d(TAG, "ACTION_DENIED from Muses");
+				DebugFileLog.write(TAG+ " ACTION_DENIED from Muses");
 				Toast.makeText(getApplicationContext(), "Action Denied..",Toast.LENGTH_SHORT).show();
 				// pDialog.dismiss();
 				break;
