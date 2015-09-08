@@ -131,7 +131,7 @@ public class MainActivity extends Activity implements OnItemClickListener {
 			openInternalAssetProperties.put("resourceName","statistics");
 			openInternalAssetProperties.put("resourceType","INTERNAL");
 			openInternalAssetProperties.put("path","/sdcard/aware_app_remote_files/MUSES_internal_asset.txt");
-			Action openInternalAssetAction = new Action("open_asset", System.currentTimeMillis());
+			Action openInternalAssetAction = new Action("open_asset", System.currentTimeMillis(), true);
 			sendUserActionsToRemoteMusesService(openInternalAssetAction, openInternalAssetProperties);
 			break;
 			
@@ -141,7 +141,7 @@ public class MainActivity extends Activity implements OnItemClickListener {
 			openStrictlyConfAssetProperties.put("resourceName","statistics");
 			openStrictlyConfAssetProperties.put("resourceType","STRICTLY_CONFIDENTIAL");
 			openStrictlyConfAssetProperties.put("path","/sdcard/aware_app_remote_files/MUSES_strictly_confidential.txt");
-			Action openStrictlyConfAssetAction = new Action("open_asset", System.currentTimeMillis());
+			Action openStrictlyConfAssetAction = new Action("open_asset", System.currentTimeMillis(), true);
 			sendUserActionsToRemoteMusesService(openStrictlyConfAssetAction, openStrictlyConfAssetProperties);
 			break;
 				
@@ -151,7 +151,7 @@ public class MainActivity extends Activity implements OnItemClickListener {
 			openAssetWithSensitivityProperties.put("resourceType","CONFIDENTIAL");
 			openAssetWithSensitivityProperties.put("path","/sdcard/aware_app_remote_files/MUSES_partner_grades.txt");
 			openAssetWithSensitivityProperties.put("sensitivity_level", "internal");	
-			Action openAssetWithSensitivityAction = new Action("open_asset", System.currentTimeMillis());
+			Action openAssetWithSensitivityAction = new Action("open_asset", System.currentTimeMillis(), true);
 			sendUserActionsToRemoteMusesService(openAssetWithSensitivityAction, openAssetWithSensitivityProperties);
 			break;
 		
@@ -165,7 +165,7 @@ public class MainActivity extends Activity implements OnItemClickListener {
 			sendEmailProperties.put("path", "/sdcard/someattachment.pdf");
 			sendEmailProperties.put("noAttachments", "1");
 			sendEmailProperties.put("attachmentInfo", "");
-			Action sendEmailAction = new Action("ACTION_SEND_MAIL", System.currentTimeMillis());
+			Action sendEmailAction = new Action("ACTION_SEND_MAIL", System.currentTimeMillis(), true);
 			sendUserActionsToRemoteMusesService(sendEmailAction, sendEmailProperties);
 			break;
 		case 8: // decrypt asset
@@ -249,8 +249,7 @@ public class MainActivity extends Activity implements OnItemClickListener {
 			Map<String, String> properties) {
 		if (serviceModel.getService().musesServiceConsumer != null) {
 			try {
-				Log.d(TAG, "Sending user's action");
-				DebugFileLog.write(TAG+ " Sending user's action");
+				Log.d(TAG, "Sending user's action: " + action.getType().toString());
 				serviceModel.getService().musesServiceConsumer.sendUserAction(
 						action, properties);
 			} catch (RemoteException e) {
